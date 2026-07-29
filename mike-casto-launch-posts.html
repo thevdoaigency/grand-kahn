@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mike Casto — Launch Posts · Grand Kahn Electric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141414;--ink-2:#1e1e1e;--paper:#f5f3ef;--paper-2:#ece8e0;
+    --red:#A32020;--red-bright:#c62a2a;--steel:#586470;--line:#d7d2c9;--line-dark:#2f2f2f;
+    --fs:"Fraunces",Georgia,serif;--fa:"Archivo","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--fa);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:0 32px}
+  a{color:inherit}
+
+  .flag{background:var(--red);color:#fff;text-align:center;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:7px 16px}
+
+  /* header */
+  header{background:var(--ink);color:#fff;padding:70px 0 60px;position:relative;overflow:hidden}
+  header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#2f2f2f}
+  header .cur{position:absolute;left:0;right:0;bottom:0;height:2px;overflow:hidden}
+  header .cur::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--red-bright) 20%,#ff5a3c 50%,var(--red-bright) 80%,transparent);background-size:220% 100%;animation:flow 5s linear infinite}
+  @keyframes flow{0%{background-position:120% 0}100%{background-position:-120% 0}}
+  .brand{font-family:var(--fs);font-weight:700;font-size:20px;letter-spacing:.16em;color:#cfccc6;margin-bottom:26px}
+  .brand b{color:var(--red-bright)}
+  header h1{font-family:var(--fs);font-weight:600;font-size:clamp(32px,5.5vw,54px);line-height:1.02;letter-spacing:-.015em;max-width:18ch}
+  header .sub{margin-top:22px;font-size:17px;color:#c9c5be;max-width:60ch}
+  header .sub b{color:#fff;font-weight:600}
+
+  /* strategy notes */
+  .notes{background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .notes .wrap{padding-top:44px;padding-bottom:44px;display:grid;gap:22px}
+  .nrow{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:start}
+  .nrow .k{font-family:var(--fs);font-size:14px;font-weight:600;color:var(--red);letter-spacing:.04em;padding-top:2px}
+  .nrow .v{font-size:15.5px;color:#3d3b37;max-width:60ch}
+  .nrow .v b{color:var(--ink);font-weight:600}
+  .gate{background:#fbeeee;border:1px solid #e6bcbc;border-left:3px solid var(--red);border-radius:4px;padding:14px 16px;font-size:14px;color:#5a2020;margin-top:6px}
+  .gate b{color:var(--red)}
+  @media(max-width:640px){.nrow{grid-template-columns:1fr;gap:6px}}
+
+  /* posts */
+  .posts{padding:70px 0 40px}
+  .post{margin-bottom:64px}
+  .phead{display:flex;align-items:baseline;gap:18px;margin-bottom:22px}
+  .pnum{font-family:var(--fs);font-size:46px;font-weight:600;color:var(--line);line-height:.8}
+  .ptitles h2{font-family:var(--fs);font-size:23px;font-weight:600;line-height:1.1}
+  .ptitles .psub{font-size:13px;letter-spacing:.06em;color:var(--steel);text-transform:uppercase;font-weight:600;margin-top:5px}
+  .wc{margin-left:auto;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#8a857c;white-space:nowrap;align-self:center}
+
+  /* the linkedin-style card */
+  .card{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.03)}
+  .card .top{height:4px;background:var(--red)}
+  .author{display:flex;align-items:center;gap:12px;padding:20px 26px 6px}
+  .avatar{width:46px;height:46px;border-radius:50%;background:var(--ink);color:#fff;font-family:var(--fs);font-weight:600;font-size:17px;display:flex;align-items:center;justify-content:center;letter-spacing:.02em}
+  .who .nm{font-weight:600;font-size:15px}
+  .who .rl{font-size:12.5px;color:#6b675f}
+  .copy{padding:14px 26px 26px;font-size:16.5px;line-height:1.62;color:#1e1c19;white-space:pre-line}
+
+  .note{margin-top:16px;background:var(--paper-2);border-radius:5px;padding:16px 20px;font-size:14px;color:#4a473f}
+  .note b{color:var(--ink)}
+  .note .lab{font-family:var(--fs);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:6px}
+
+  footer{background:var(--ink);color:#8a857c;padding:40px 0;font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  footer b{color:#cfccc6}
+
+  @media(prefers-reduced-motion:reduce){header .cur::before{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="flag">Working draft · for review · not yet published</div>
+
+<header>
+  <div class="wrap">
+    <div class="brand">GRAND <b>KAHN</b> ELECTRIC</div>
+    <h1>Mike Casto — LinkedIn Launch Posts</h1>
+    <p class="sub">Four posts to open Mike's page and stake a claim to a category — <b>critical power: the loads that can't fail</b>, not "electrical contractor." Each one moves him toward being the person you call when the power isn't allowed to go down.</p>
+  </div>
+</header>
+
+<section class="notes">
+  <div class="wrap">
+    <div class="nrow">
+      <div class="k">The voice</div>
+      <div class="v">He sells by refusing to oversell. Modest openers, named clients and years doing the work, first person, no hashtags, no stacked adjectives. His one move per post is <b>the quiet pivot</b> — the humble line that lands as the flex, never a hard close. Where Rob ends on a flash of heat, Mike ends on plain resolve.</div>
+    </div>
+    <div class="nrow">
+      <div class="k">The hard rule</div>
+      <div class="v">Mike doesn't publish the longevity claim loose. <b>"119 years · since 1907 · Chicago's first registered electrical contractor"</b> is the load-bearing credential — and the live site currently says 1907, 1928, <i>and</i> "117 years" in three different places.
+        <div class="gate"><b>Publish gate.</b> Lock the founding year to one verified source and confirm "first registered" before any post using it goes live. Every draft below leans on it. Breaking this once undoes the credibility the whole page runs on.</div>
+      </div>
+    </div>
+    <div class="nrow">
+      <div class="k">Second gate</div>
+      <div class="v">The named-client posts (Rush, City Hope, Tesla) need each client's OK to name publicly, and the Aurora school district <b>stays unnamed</b> — the crew deliberately kept it off camera. Confirm clearances before Post 2 and Post 4 publish.</div>
+    </div>
+  </div>
+</section>
+
+<div class="posts">
+  <div class="wrap">
+
+    <!-- POST 1 -->
+    <div class="post">
+      <div class="phead">
+        <div class="pnum">1</div>
+        <div class="ptitles"><h2>The Category</h2><div class="psub">Flag in the ground — who Mike is</div></div>
+        <div class="wc">103 words · copy</div>
+      </div>
+      <div class="card">
+        <div class="top"></div>
+        <div class="author">
+          <div class="avatar">MC</div>
+          <div class="who"><div class="nm">Mike Casto</div><div class="rl">President · Grand Kahn Electric</div></div>
+        </div>
+        <div class="copy">We're not the biggest electrical contractor in Chicago. We've just been here the longest.
+
+119 years. Since 1907. Long enough to learn that the job isn't square footage — it's the load that isn't allowed to fail.
+
+An office can lose power for an afternoon. A cancer center in the middle of a scan cannot. A hospital cannot. The buildings we care most about are the ones where the power staying on isn't a convenience — it's the whole point.
+
+That's the work we've quietly built our name on. Not the biggest jobs in the city. The ones that can't afford to go dark.</div>
+      </div>
+      <div class="note"><span class="lab">Note</span>The anchor line is his own, verbatim from the June 30 shoot — a modest opener that's secretly the flex. The specifics (119 years, a scan) carry it; no adjectives needed. <b>Uses the longevity claim — gated on founding-year confirmation.</b></div>
+    </div>
+
+    <!-- POST 2 -->
+    <div class="post">
+      <div class="phead">
+        <div class="pnum">2</div>
+        <div class="ptitles"><h2>The Proof</h2><div class="psub">Critical-load healthcare, named</div></div>
+        <div class="wc">119 words · copy</div>
+      </div>
+      <div class="card">
+        <div class="top"></div>
+        <div class="author">
+          <div class="avatar">MC</div>
+          <div class="who"><div class="nm">Mike Casto</div><div class="rl">President · Grand Kahn Electric</div></div>
+        </div>
+        <div class="copy">When people ask what we actually do, I point at the buildings.
+
+Rush's new cancer facility in Lisle. The imaging upgrade at City Hope — a cancer diagnosis center that made the local news. Tesla's technician training facility in Melrose Park, wired end to end.
+
+Over the last decade, healthcare and medical buildings have become our bread and butter. Not because it's a trend — because it's the hardest version of the work. Imaging equipment, life-safety systems, and the air a sick person is breathing all run on the electrical system behind the wall.
+
+We don't talk about those jobs much. The people who run those buildings know who did the work.
+
+That's the reference list I'd put up against anyone's.</div>
+      </div>
+      <div class="note"><span class="lab">Note</span>Mike's proof post — named critical-load work does what a claim can't. "We don't talk about it much / the people who run those buildings know" is his version of restraint; the last line is the quiet flex. <b>Gated on client clearance to name Rush, City Hope, and Tesla.</b></div>
+    </div>
+
+    <!-- POST 3 -->
+    <div class="post">
+      <div class="phead">
+        <div class="pnum">3</div>
+        <div class="ptitles"><h2>The Stakes</h2><div class="psub">Who's inside the building</div></div>
+        <div class="wc">111 words · copy</div>
+      </div>
+      <div class="card">
+        <div class="top"></div>
+        <div class="author">
+          <div class="avatar">MC</div>
+          <div class="who"><div class="nm">Mike Casto</div><div class="rl">President · Grand Kahn Electric</div></div>
+        </div>
+        <div class="copy">Think about what's happening inside a cancer center at any given hour.
+
+Someone is getting a scan that will tell them what the next year of their life looks like. Someone is in treatment that can't be paused. The machines doing that work don't run on good intentions — they run on power that has to be there, every second, without a flicker.
+
+That's the part of this job that doesn't show up in a photo. A finished electrical room looks the same whether it was done right or barely.
+
+The difference only shows up on the worst day — when everything else fails and the power doesn't.
+
+We build for that day.</div>
+      </div>
+      <div class="note"><span class="lab">Note</span>Restraint is what makes it land — no sentimentality, the facts do the emotional work, then Mike steps back to plain resolve. Parallel to Rob's stakes post. No client specifics, so this one is <b>clear to publish</b> on its own.</div>
+    </div>
+
+    <!-- POST 4 -->
+    <div class="post">
+      <div class="phead">
+        <div class="pnum">4</div>
+        <div class="ptitles"><h2>The Forward Flag</h2><div class="psub">Where the work is going</div></div>
+        <div class="wc">117 words · copy</div>
+      </div>
+      <div class="card">
+        <div class="top"></div>
+        <div class="author">
+          <div class="avatar">MC</div>
+          <div class="who"><div class="nm">Mike Casto</div><div class="rl">President · Grand Kahn Electric</div></div>
+        </div>
+        <div class="copy">The loads that can't fail are multiplying.
+
+A school district we just finished a project for has a fleet of electric buses that has to roll on the first morning of the school year — no exceptions. Same discipline as a hospital: the power has to be there when it's needed, or the whole thing stops.
+
+That's where this is heading. Electrification is putting critical-load demands on buildings and fleets that never had them before — and most of them are being wired by people learning it for the first time.
+
+We've been doing the hard version of this for 119 years. We're not new to power that can't fail. We're just getting started on where it's needed next.</div>
+      </div>
+      <div class="note"><span class="lab">Note</span>Plants the forward flag on the <b>category</b> — critical power expanding through electrification — without naming a specific target. Deliberately does <b>not</b> say "data centers": that ambition is still unconfirmed with Mike. If he confirms it, this post gets a sharper, named edge. Until then it claims the ground, not the destination. Aurora district stays unnamed.</div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>Grand Kahn Electric · Mike Casto launch posts · <b>working draft</b></div>
+    <div>The VDO Aigency · July 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>

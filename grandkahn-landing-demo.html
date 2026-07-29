@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grand Kahn Electric — Power that can't go down</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141414;
+    --ink-2:#1e1e1e;
+    --paper:#f5f3ef;
+    --paper-2:#ece8e0;
+    --red:#A32020;
+    --red-bright:#c62a2a;
+    --steel:#586470;
+    --line:#d7d2c9;
+    --line-dark:#333;
+    --fs:"Fraunces",Georgia,"Times New Roman",serif;
+    --fa:"Archivo","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--fa);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  /* demo ribbon */
+  .demoflag{background:var(--red);color:#fff;text-align:center;font-family:var(--fa);font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:7px 16px}
+  .demoflag b{font-weight:700}
+
+  /* ---------- nav ---------- */
+  nav{background:var(--ink);color:#fff;position:sticky;top:0;z-index:60;border-bottom:1px solid var(--line-dark)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1160px;margin:0 auto;padding:0 32px}
+  .brand{font-family:var(--fs);font-weight:700;font-size:23px;letter-spacing:.16em}
+  .brand b{color:var(--red-bright);font-weight:700}
+  .nav-links{display:flex;gap:30px;align-items:center;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+  .nav-links a{color:#cfccc6;transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{background:var(--red);color:#fff;padding:10px 18px;font-weight:600;letter-spacing:.06em;border-radius:2px;font-size:12.5px;transition:background .2s}
+  .nav-cta:hover{background:var(--red-bright)}
+  .phone{color:#fff;font-weight:600;letter-spacing:.04em}
+  @media(max-width:900px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:96px 0 108px}
+  .hero::before{content:"";position:absolute;inset:0;background:
+     radial-gradient(1200px 500px at 78% -8%, rgba(88,100,112,.28), transparent 60%),
+     radial-gradient(700px 500px at 12% 120%, rgba(163,32,32,.16), transparent 60%);}
+  .hero-in{position:relative;z-index:2}
+  .eyebrow{font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;color:#9aa3ad;font-weight:600;display:flex;align-items:center;gap:12px;margin-bottom:30px}
+  .live{display:inline-flex;align-items:center;gap:7px;color:#e6b3b3}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--red-bright);box-shadow:0 0 0 0 rgba(198,42,42,.7);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(198,42,42,.6)}70%{box-shadow:0 0 0 12px rgba(198,42,42,0)}100%{box-shadow:0 0 0 0 rgba(198,42,42,0)}}
+  h1.title{font-family:var(--fs);font-weight:600;font-size:clamp(44px,8vw,88px);line-height:.98;letter-spacing:-.015em;max-width:15ch}
+  h1.title em{font-style:italic;color:var(--red-bright)}
+  .sub{margin-top:30px;font-size:clamp(17px,2.1vw,20px);color:#d3cfc8;max-width:56ch;line-height:1.55}
+  .hero-cta{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap}
+  .btn{font-family:var(--fa);font-weight:600;font-size:14.5px;letter-spacing:.04em;padding:15px 26px;border-radius:2px;cursor:pointer;transition:all .2s;border:1px solid transparent}
+  .btn-red{background:var(--red);color:#fff}
+  .btn-red:hover{background:var(--red-bright)}
+  .btn-ghost{background:transparent;color:#fff;border-color:#4a4a4a}
+  .btn-ghost:hover{border-color:#fff}
+
+  /* credential rail under hero */
+  .rail{position:relative;z-index:2;border-top:1px solid #2c2c2c;margin-top:72px;padding-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .rail .item{display:flex;flex-direction:column;gap:4px}
+  .rail .big{font-family:var(--fs);font-size:34px;font-weight:600;color:#fff;line-height:1}
+  .rail .lab{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8f98a2}
+  @media(max-width:700px){.rail{grid-template-columns:1fr;gap:20px}}
+
+  /* ---------- section frame ---------- */
+  section{padding:96px 0}
+  .band{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+  .band .tick{width:34px;height:2px;background:var(--red)}
+  .band span{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--red)}
+  h2.head{font-family:var(--fs);font-weight:600;font-size:clamp(30px,4.4vw,46px);line-height:1.08;letter-spacing:-.01em;max-width:20ch}
+  .intro{font-size:18.5px;color:#3d3b37;max-width:60ch;margin-top:22px;line-height:1.6}
+
+  /* thesis / critical power */
+  .thesis{background:var(--paper)}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:52px}
+  .pillar{background:#fff;border:1px solid var(--line);border-radius:5px;padding:32px 28px;position:relative;overflow:hidden}
+  .pillar::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--red)}
+  .pillar .pk{font-family:var(--fs);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);font-weight:600;margin-bottom:16px}
+  .pillar h3{font-family:var(--fs);font-size:24px;font-weight:600;line-height:1.15;margin-bottom:12px}
+  .pillar p{font-size:15px;color:#4b4844}
+  @media(max-width:820px){.pillars{grid-template-columns:1fr}}
+
+  /* recent work */
+  .work{background:var(--ink);color:#fff}
+  .work .intro{color:#c9c5be}
+  .work-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
+  .work h2.head{color:#fff}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:52px}
+  .proj{background:var(--ink-2);border:1px solid #2c2c2c;border-radius:5px;overflow:hidden;transition:transform .25s,border-color .25s}
+  .proj:hover{transform:translateY(-4px);border-color:var(--red)}
+  .proj .ph{height:190px;position:relative;background:linear-gradient(135deg,#242424,#191919);display:flex;align-items:flex-end;padding:18px}
+  .proj .ph .tagpill{background:rgba(163,32,32,.92);color:#fff;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 11px;border-radius:2px}
+  .proj .ph .grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:26px 26px}
+  .proj .ph .ph-label{position:absolute;top:16px;left:18px;font-family:var(--fs);font-size:13px;color:#5a5a5a;letter-spacing:.1em}
+  .proj .body{padding:24px}
+  .proj h3{font-family:var(--fs);font-size:23px;font-weight:600;margin-bottom:6px}
+  .proj .loc{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--red-bright);font-weight:600;margin-bottom:12px}
+  .proj p{font-size:14.5px;color:#b8b4ad}
+  @media(max-width:820px){.cards{grid-template-columns:1fr}}
+
+  /* capabilities */
+  .caps{background:var(--paper-2)}
+  .cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:52px;background:var(--line);border:1px solid var(--line)}
+  .cap{background:var(--paper);padding:30px 24px;min-height:180px;display:flex;flex-direction:column;justify-content:space-between}
+  .cap .num{font-family:var(--fs);font-size:14px;color:var(--red);font-weight:600}
+  .cap h4{font-family:var(--fs);font-size:20px;font-weight:600;line-height:1.15;margin-top:auto}
+  .cap p{font-size:13.5px;color:#5a574f;margin-top:8px}
+  @media(max-width:820px){.cap-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.cap-grid{grid-template-columns:1fr}}
+
+  /* ---------- SIGNATURE: unbroken current since 1907 ---------- */
+  .legacy{background:var(--ink);color:#fff;padding-bottom:104px}
+  .legacy h2.head{color:#fff}
+  .legacy .intro{color:#c9c5be}
+  .spine{position:relative;margin-top:70px;padding-top:38px}
+  .current{position:absolute;top:0;left:0;right:0;height:2px;background:#2f2f2f}
+  .current::after{content:"";position:absolute;top:0;left:0;height:100%;width:100%;
+    background:linear-gradient(90deg,transparent,var(--red-bright) 18%,#ff5a3c 50%,var(--red-bright) 82%,transparent);
+    background-size:220% 100%;animation:flow 5s linear infinite;opacity:.95}
+  @keyframes flow{0%{background-position:120% 0}100%{background-position:-120% 0}}
+  .nodes{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+  .node{position:relative}
+  .node::before{content:"";position:absolute;top:-38px;left:0;width:11px;height:11px;border-radius:50%;background:var(--ink);border:2px solid var(--red-bright);transform:translateY(-5px)}
+  .node .yr{font-family:var(--fs);font-size:27px;font-weight:600;color:#fff;margin-bottom:6px}
+  .node .txt{font-size:13.5px;color:#a7a29b;max-width:22ch}
+  @media(max-width:820px){
+    .nodes{grid-template-columns:1fr;gap:0}
+    .current{left:5px;right:auto;top:0;bottom:0;width:2px;height:auto}
+    .current::after{background:linear-gradient(180deg,transparent,var(--red-bright) 18%,#ff5a3c 50%,var(--red-bright) 82%,transparent);background-size:100% 220%;animation:flowv 5s linear infinite}
+    @keyframes flowv{0%{background-position:0 120%}100%{background-position:0 -120%}}
+    .spine{padding-top:0;padding-left:34px}
+    .node{padding:22px 0}
+    .node::before{top:26px;left:-34px;transform:none}
+  }
+
+  /* EV band */
+  .evband{background:var(--red);color:#fff;padding:70px 0}
+  .evband .wrap{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  .evband h2{font-family:var(--fs);font-size:clamp(26px,3.6vw,38px);font-weight:600;line-height:1.1;max-width:20ch}
+  .evband p{color:#f3d6d6;margin-top:12px;max-width:44ch;font-size:16px}
+  .btn-white{background:#fff;color:var(--red);font-weight:700}
+  .btn-white:hover{background:var(--paper)}
+
+  /* contact / footer */
+  footer{background:var(--ink);color:#c9c5be;padding:80px 0 34px}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid #2b2b2b}
+  .foot-brand .brand{font-size:26px;margin-bottom:16px;display:inline-block}
+  .foot-brand p{font-size:14.5px;color:#a7a29b;max-width:34ch}
+  .foot-col h5{font-family:var(--fa);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8f98a2;margin-bottom:16px;font-weight:700}
+  .foot-col a,.foot-col p{display:block;font-size:14.5px;color:#c9c5be;margin-bottom:10px}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px;color:#7c766e}
+  @media(max-width:820px){.foot-top{grid-template-columns:1fr;gap:32px}}
+
+  @media(prefers-reduced-motion:reduce){
+    .dot,.current::after{animation:none}
+    .current::after{opacity:.85;background:var(--red-bright)}
+  }
+</style>
+</head>
+<body>
+
+<div class="demoflag"><b>Concept demo</b> &nbsp;·&nbsp; built by VDO Aigency to show what Grand Kahn's site could be &nbsp;·&nbsp; not live, not for production</div>
+
+<nav>
+  <div class="nav-in">
+    <div class="brand">GRAND <b>KAHN</b></div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#legacy">Since 1907</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="https://grandkahn.com/ev-charger/">EV Charger Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap hero-in">
+    <div class="eyebrow">
+      <span class="live"><span class="dot"></span>Chicago's first registered electrical contractor</span>
+      &nbsp;·&nbsp; Since 1907
+    </div>
+    <h1 class="title">The power that <em>can't</em> go down.</h1>
+    <p class="sub">For 119 years, Chicago has trusted Grand Kahn to wire the buildings that can't afford to lose power — cancer centers, hospitals, labs, and the critical infrastructure of what comes next.</p>
+    <div class="hero-cta">
+      <a class="btn btn-red" href="#work">See our work</a>
+      <a class="btn btn-ghost" href="#contact">Talk to us</a>
+    </div>
+
+    <div class="rail">
+      <div class="item"><span class="big">1907</span><span class="lab">Founded in Chicago</span></div>
+      <div class="item"><span class="big">119 yrs</span><span class="lab">Longest-standing in the city</span></div>
+      <div class="item"><span class="big">Critical load</span><span class="lab">Healthcare · industrial · EV</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- THESIS -->
+<section class="thesis" id="what">
+  <div class="wrap">
+    <div class="band"><span class="tick"></span><span>What we do</span></div>
+    <h2 class="head">Some buildings can lose power for an afternoon. Ours can't lose it for a second.</h2>
+    <p class="intro">Grand Kahn builds electrical systems where failure isn't an option — the same discipline whether it's a cancer imaging suite, a manufacturing floor, or a fleet of electric buses that has to roll on the first day of school. A century of Chicago work, pointed at the loads that matter most.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pk">Healthcare</div>
+        <h3>Power that patients depend on</h3>
+        <p>Cancer centers, imaging upgrades, and medical office buildings — our bread and butter for over a decade. Uptime isn't a feature here; it's the whole job.</p>
+      </div>
+      <div class="pillar">
+        <div class="pk">Industrial &amp; Legacy</div>
+        <h3>The backbone under the skyline</h3>
+        <p>We've wired Chicago through every era of its construction, from early manufacturing to the high-rises standing today. Heavy load is the family trade.</p>
+      </div>
+      <div class="pillar">
+        <div class="pk">EV &amp; Energy</div>
+        <h3>Ready for what plugs in next</h3>
+        <p>Fleet charging, solar carports, and EV-capable infrastructure built to code and ahead of the mandate. Same panel and load work — new demand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT WORK -->
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="work-head">
+      <div>
+        <div class="band"><span class="tick"></span><span>Recent work</span></div>
+        <h2 class="head">What we're powering right now.</h2>
+      </div>
+      <a class="btn btn-ghost" href="https://grandkahn.com/projects/">All projects</a>
+    </div>
+
+    <div class="cards">
+      <div class="proj">
+        <div class="ph"><div class="grid-lines"></div><span class="ph-label">project photo</span><span class="tagpill">Healthcare</span></div>
+        <div class="body">
+          <h3>Rush — Cancer Center</h3>
+          <div class="loc">Lisle, Illinois</div>
+          <p>Full electrical build for a new cancer facility with one of Chicagoland's largest medical providers. Critical-load power where downtime isn't survivable.</p>
+        </div>
+      </div>
+      <div class="proj">
+        <div class="ph"><div class="grid-lines"></div><span class="ph-label">project photo</span><span class="tagpill">Healthcare</span></div>
+        <div class="body">
+          <h3>City Hope — Imaging Upgrade</h3>
+          <div class="loc">Chicago, Illinois</div>
+          <p>An imaging build for cancer research and diagnosis, recognized across local news. The kind of work the whole city sees.</p>
+        </div>
+      </div>
+      <div class="proj">
+        <div class="ph"><div class="grid-lines"></div><span class="ph-label">project photo</span><span class="tagpill">Industrial</span></div>
+        <div class="body">
+          <h3>Tesla — Technician Training Facility</h3>
+          <div class="loc">Melrose Park, Illinois</div>
+          <p>The complete electrical build-out of Tesla's training facility at Lincoln Tech. A recognizable name, wired end to end by our crews.</p>
+        </div>
+      </div>
+      <div class="proj">
+        <div class="ph"><div class="grid-lines"></div><span class="ph-label">project photo</span><span class="tagpill">EV &amp; Solar</span></div>
+        <div class="body">
+          <h3>EV Solar Bus Depot</h3>
+          <div class="loc">Aurora area · School district</div>
+          <p>A turnkey install: EV bus charging plus a solar carport that back-feeds the service to cut the district's costs — delivered on budget, ahead of the school year.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="caps" id="capabilities">
+  <div class="wrap">
+    <div class="band"><span class="tick"></span><span>Capabilities</span></div>
+    <h2 class="head">One crew, from the panel to the PV string.</h2>
+    <div class="cap-grid">
+      <div class="cap"><span class="num">01</span><div><h4>Electrical Construction</h4><p>Ground-up and build-out electrical for projects of any size or complexity.</p></div></div>
+      <div class="cap"><span class="num">02</span><div><h4>Field Engineering</h4><p>Load calculation, code compliance, and the planning that keeps a job on schedule.</p></div></div>
+      <div class="cap"><span class="num">03</span><div><h4>EV Charging Infrastructure</h4><p>Fleet and commercial charging, EV-capable rough-in, ahead of Illinois mandates.</p></div></div>
+      <div class="cap"><span class="num">04</span><div><h4>Solar &amp; Energy</h4><p>Solar carports and back-feed systems that turn overhead into savings.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE: LEGACY SPINE -->
+<section class="legacy" id="legacy">
+  <div class="wrap">
+    <div class="band"><span class="tick"></span><span>Since 1907</span></div>
+    <h2 class="head">One unbroken line of power — for 119 years.</h2>
+    <p class="intro">Grand Kahn has been part of Chicago's electrical infrastructure through every phase of the city's construction. The current has never stopped running.</p>
+    <div class="spine">
+      <div class="current"></div>
+      <div class="nodes">
+        <div class="node"><div class="yr">1907</div><div class="txt">Founded — Chicago's first registered electrical contractor.</div></div>
+        <div class="node"><div class="yr">1920s</div><div class="txt">Powering the manufacturing floors driving the city's growth.</div></div>
+        <div class="node"><div class="yr">Mid-century</div><div class="txt">Wiring the skyline as Chicago builds upward.</div></div>
+        <div class="node"><div class="yr">2010s</div><div class="txt">Healthcare and critical facilities become the core of the work.</div></div>
+        <div class="node"><div class="yr">Today</div><div class="txt">EV, solar, and the critical loads of what comes next.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EV BAND -->
+<div class="evband">
+  <div class="wrap">
+    <div>
+      <h2>The parking code changed. Most building owners haven't noticed yet.</h2>
+      <p>Illinois now requires new construction to be EV-capable — and the cheapest time to plan for it is before you break ground.</p>
+    </div>
+    <a class="btn btn-white" href="https://grandkahn.com/ev-charger/">Get an EV charger quote</a>
+  </div>
+</div>
+
+<!-- CONTACT / FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="brand">GRAND <b style="color:var(--red-bright)">KAHN</b></span>
+        <p>Chicago's first registered electrical contractor. Building the power the city depends on since 1907.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Location</h5>
+        <p>1515 Woodfield Road<br>Schaumburg, IL 60173</p>
+        <h5 style="margin-top:24px">Contact</h5>
+        <a href="mailto:gkinfo@grandkahn.com">gkinfo@grandkahn.com</a>
+        <a href="tel:2243300257">224-330-0257</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="https://grandkahn.com/about/">About Us</a>
+        <a href="https://grandkahn.com/services/">Services</a>
+        <a href="https://grandkahn.com/projects/">Our Projects</a>
+        <a href="https://grandkahn.com/news/">News</a>
+        <a href="https://grandkahn.com/contact/">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Grand Kahn Electric. All rights reserved.</div>
+      <div>Concept demo · VDO Aigency · not affiliated with the live site</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
