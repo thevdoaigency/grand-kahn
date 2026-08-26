@@ -117,13 +117,24 @@
   /* deliverables / in-repo grid */
   .repo{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:8px}
-  a.rcard{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px;text-decoration:none;color:inherit;transition:transform .2s,border-color .2s,box-shadow .2s}
-  a.rcard:hover{transform:translateY(-3px);border-color:var(--red);box-shadow:0 6px 18px rgba(0,0,0,.06)}
-  a.rcard .rtype{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
-  a.rcard .rtype .arw{color:var(--gray);font-weight:400}
-  a.rcard h3{font-family:Georgia,serif;font-size:19px;line-height:1.2;margin-bottom:8px}
-  a.rcard p{font-size:13.5px;color:#4a4844;flex:1}
-  a.rcard .rfoot{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:16px;font-weight:700}
+  .rcard{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px;transition:transform .2s,border-color .2s,box-shadow .2s}
+  .rcard:hover{transform:translateY(-3px);border-color:var(--red);box-shadow:0 6px 18px rgba(0,0,0,.06)}
+  .rcard .hit{display:flex;flex-direction:column;flex:1;text-decoration:none;color:inherit}
+  .rcard .rtype{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+  .rcard .rtype .arw{color:var(--gray);font-weight:400}
+  .rcard h3{font-family:Georgia,serif;font-size:19px;line-height:1.2;margin-bottom:8px}
+  .rcard p{font-size:13.5px;color:#4a4844;flex:1}
+  .rcard .rfoot{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:16px;font-weight:700}
+
+  /* approve + notes */
+  .approve-block{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+  .approve-toggle{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);cursor:pointer;user-select:none;margin-bottom:8px}
+  .approve-toggle input{width:15px;height:15px;accent-color:var(--red);cursor:pointer}
+  .approve-block.is-approved{background:#fbf4ee;margin:16px -22px -22px;padding:14px 22px 22px;border-top:1px solid var(--line)}
+  .approve-notes{width:100%;font-family:"Helvetica Neue",Arial,sans-serif;font-size:12.5px;color:var(--ink);border:1px solid var(--line);padding:6px 8px;border-radius:2px;resize:vertical;min-height:36px;background:#fff}
+  .approve-notes::placeholder{color:#9a968c}
+  .approve-saved{font-size:10px;color:var(--gray);opacity:0;transition:opacity .3s;margin-top:4px;display:block}
+  .approve-saved.show{opacity:1}
 
   /* moves */
   .move{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:26px 0;border-bottom:1px solid var(--line)}
@@ -193,42 +204,84 @@
   <div class="wrap">
     <div class="kicker"><span class="n">◆</span><h2>In this report — live artifacts</h2></div>
     <div class="rgrid">
-      <a class="rcard" href="grandkahn-landing-demo.html" target="_blank" rel="noopener">
-        <div class="rtype"><span>Page · Demo</span><span class="arw">open →</span></div>
-        <h3>Landing page — concept demo</h3>
-        <p>What grandkahn.com could be: critical-power thesis, founding year fixed to one number, live proof replacing the dead 2022 news.</p>
-        <div class="rfoot">Not for production</div>
-      </a>
-      <a class="rcard" href="mike-casto-launch-posts.html" target="_blank" rel="noopener">
-        <div class="rtype"><span>Page · Drafts</span><span class="arw">open →</span></div>
-        <h3>LinkedIn launch posts</h3>
-        <p>Four posts in Mike's voice — Category, Proof, Stakes, Forward flag. Publish gates flagged on each.</p>
-        <div class="rfoot">Working draft · for review</div>
-      </a>
-      <a class="rcard" href="https://thevdoaigency.github.io/grand-kahn/grand-kahn-ev-post-preview-mockup.html" target="_blank" rel="noopener">
-        <div class="rtype"><span>Page · Preview</span><span class="arw">open ↗</span></div>
-        <h3>EV post — "The Parking Code Just Changed"</h3>
-        <p>Current-news blog post in real grandkahn.com styling — the first live proof against a News section frozen since 2022.</p>
-        <div class="rfoot">Preview · legal check pending</div>
-      </a>
-      <a class="rcard" href="https://drive.google.com/file/d/1XrtsEE9QwwAmYyc7LjGVHy3PE09htNen/view?usp=sharing" target="_blank" rel="noopener">
-        <div class="rtype"><span>Reel · Video</span><span class="arw">open ↗</span></div>
-        <h3>Mike Casto — sample reel</h3>
-        <p>The June 30 Chicago interview. Anchor line, founding story, and the named-project reel in his own voice.</p>
-        <div class="rfoot">Google Drive · delivered</div>
-      </a>
-      <a class="rcard" href="https://drive.google.com/file/d/1ZNr4xSrCQOsfmKa7Pk3xN7sILpNs2-em/view?usp=sharing" target="_blank" rel="noopener">
-        <div class="rtype"><span>Reel · Video</span><span class="arw">open ↗</span></div>
-        <h3>Aurora EV bus facility — sample reel</h3>
-        <p>Turnkey install, three voices: Ivan on delivery, Jeff on craft, Sam on budget. The execution-discipline proof.</p>
-        <div class="rfoot">Google Drive · delivered</div>
-      </a>
-      <a class="rcard" href="https://thevdoaigency.github.io/grand-kahn/grand-kahn-shoot-brief.html" target="_blank" rel="noopener">
-        <div class="rtype"><span>Doc · Shoot brief</span><span class="arw">open ↗</span></div>
-        <h3>Aurora shoot brief — the homework</h3>
-        <p>Greg's full shot guide behind the reel: every frame planned, modular vs. job-specific, plus the foreman interview question bank.</p>
-        <div class="rfoot">Paired with the Aurora reel</div>
-      </a>
+      <div class="rcard">
+        <a class="hit" href="grandkahn-landing-demo.html" target="_blank" rel="noopener">
+          <div class="rtype"><span>Page · Demo</span><span class="arw">open →</span></div>
+          <h3>Landing page — concept demo</h3>
+          <p>What grandkahn.com could be: critical-power thesis, founding year fixed to one number, live proof replacing the dead 2022 news.</p>
+          <div class="rfoot">Not for production</div>
+        </a>
+        <div class="approve-block" data-item-id="landing-demo">
+          <label class="approve-toggle"><input type="checkbox" class="approve-check"> Approved</label>
+          <textarea class="approve-notes" rows="2" placeholder="Notes for Brandon…"></textarea>
+          <span class="approve-saved">Saved</span>
+        </div>
+      </div>
+      <div class="rcard">
+        <a class="hit" href="mike-casto-launch-posts.html" target="_blank" rel="noopener">
+          <div class="rtype"><span>Page · Drafts</span><span class="arw">open →</span></div>
+          <h3>LinkedIn launch posts</h3>
+          <p>Four posts in Mike's voice — Category, Proof, Stakes, Forward flag. Publish gates flagged on each.</p>
+          <div class="rfoot">Working draft · for review</div>
+        </a>
+        <div class="approve-block" data-item-id="launch-posts">
+          <label class="approve-toggle"><input type="checkbox" class="approve-check"> Approved</label>
+          <textarea class="approve-notes" rows="2" placeholder="Notes for Brandon…"></textarea>
+          <span class="approve-saved">Saved</span>
+        </div>
+      </div>
+      <div class="rcard">
+        <a class="hit" href="https://thevdoaigency.github.io/grand-kahn/grand-kahn-ev-post-preview-mockup.html" target="_blank" rel="noopener">
+          <div class="rtype"><span>Page · Preview</span><span class="arw">open ↗</span></div>
+          <h3>EV post — "The Parking Code Just Changed"</h3>
+          <p>Current-news blog post in real grandkahn.com styling — the first live proof against a News section frozen since 2022.</p>
+          <div class="rfoot">Preview · legal check pending</div>
+        </a>
+        <div class="approve-block" data-item-id="ev-pilot-post">
+          <label class="approve-toggle"><input type="checkbox" class="approve-check"> Approved</label>
+          <textarea class="approve-notes" rows="2" placeholder="Notes for Brandon…"></textarea>
+          <span class="approve-saved">Saved</span>
+        </div>
+      </div>
+      <div class="rcard">
+        <a class="hit" href="https://drive.google.com/file/d/1XrtsEE9QwwAmYyc7LjGVHy3PE09htNen/view?usp=sharing" target="_blank" rel="noopener">
+          <div class="rtype"><span>Reel · Video</span><span class="arw">open ↗</span></div>
+          <h3>Mike Casto — sample reel</h3>
+          <p>The June 30 Chicago interview. Anchor line, founding story, and the named-project reel in his own voice.</p>
+          <div class="rfoot">Google Drive · delivered</div>
+        </a>
+        <div class="approve-block" data-item-id="mike-reel">
+          <label class="approve-toggle"><input type="checkbox" class="approve-check"> Approved</label>
+          <textarea class="approve-notes" rows="2" placeholder="Notes for Brandon…"></textarea>
+          <span class="approve-saved">Saved</span>
+        </div>
+      </div>
+      <div class="rcard">
+        <a class="hit" href="https://drive.google.com/file/d/1ZNr4xSrCQOsfmKa7Pk3xN7sILpNs2-em/view?usp=sharing" target="_blank" rel="noopener">
+          <div class="rtype"><span>Reel · Video</span><span class="arw">open ↗</span></div>
+          <h3>Aurora EV bus facility — sample reel</h3>
+          <p>Turnkey install, three voices: Ivan on delivery, Jeff on craft, Sam on budget. The execution-discipline proof.</p>
+          <div class="rfoot">Google Drive · delivered</div>
+        </a>
+        <div class="approve-block" data-item-id="aurora-reel">
+          <label class="approve-toggle"><input type="checkbox" class="approve-check"> Approved</label>
+          <textarea class="approve-notes" rows="2" placeholder="Notes for Brandon…"></textarea>
+          <span class="approve-saved">Saved</span>
+        </div>
+      </div>
+      <div class="rcard">
+        <a class="hit" href="https://thevdoaigency.github.io/grand-kahn/grand-kahn-shoot-brief.html" target="_blank" rel="noopener">
+          <div class="rtype"><span>Doc · Shoot brief</span><span class="arw">open ↗</span></div>
+          <h3>Aurora shoot brief — the homework</h3>
+          <p>Greg's full shot guide behind the reel: every frame planned, modular vs. job-specific, plus the foreman interview question bank.</p>
+          <div class="rfoot">Paired with the Aurora reel</div>
+        </a>
+        <div class="approve-block" data-item-id="aurora-shoot-brief">
+          <label class="approve-toggle"><input type="checkbox" class="approve-check"> Approved</label>
+          <textarea class="approve-notes" rows="2" placeholder="Notes for Brandon…"></textarea>
+          <span class="approve-saved">Saved</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -399,5 +452,73 @@
   </div>
 </footer>
 
+<script>
+  // ---- Approve + Notes, synced via Cloudflare Worker → R2 ----
+  // Same Worker as Rob's board — different board name keeps the data separate.
+  var WORKER_URL = "https://leo-eff-approvals.thevdoaigency.workers.dev";
+  var WRITE_KEY  = "BjY.Lk9NQid_.c8";
+  // Same soft-lock caveat as Rob's page: this key lives in page source,
+  // it stops random internet traffic, not a determined snoop. Fine here.
+
+  (function(){
+    var blocks = document.querySelectorAll('.approve-block');
+
+    function applyState(block, state){
+      var check = block.querySelector('.approve-check');
+      var notes = block.querySelector('.approve-notes');
+      if(state){
+        check.checked = !!state.approved;
+        notes.value = state.notes || '';
+      }
+      block.classList.toggle('is-approved', check.checked);
+    }
+
+    function flashSaved(block){
+      var saved = block.querySelector('.approve-saved');
+      saved.classList.add('show');
+      clearTimeout(block._savedTimer);
+      block._savedTimer = setTimeout(function(){ saved.classList.remove('show'); }, 1500);
+    }
+
+    function post(itemId, approved, notes, block){
+      fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Whiteboard-Key': WRITE_KEY },
+        body: JSON.stringify({ board: 'mike', itemId: itemId, approved: approved, notes: notes })
+      }).then(function(r){
+        if(r.ok) flashSaved(block);
+      }).catch(function(){ /* offline or worker not configured yet — fail quietly */ });
+    }
+
+    fetch(WORKER_URL + '?board=mike')
+      .then(function(r){ return r.ok ? r.json() : {}; })
+      .then(function(data){
+        blocks.forEach(function(block){
+          var id = block.getAttribute('data-item-id');
+          applyState(block, data[id]);
+        });
+      })
+      .catch(function(){ /* worker not reachable yet — page still works, just unsynced */ });
+
+    blocks.forEach(function(block){
+      var id = block.getAttribute('data-item-id');
+      var check = block.querySelector('.approve-check');
+      var notes = block.querySelector('.approve-notes');
+      var notesTimer;
+
+      check.addEventListener('change', function(){
+        block.classList.toggle('is-approved', check.checked);
+        post(id, check.checked, notes.value, block);
+      });
+
+      notes.addEventListener('input', function(){
+        clearTimeout(notesTimer);
+        notesTimer = setTimeout(function(){
+          post(id, check.checked, notes.value, block);
+        }, 800);
+      });
+    });
+  })();
+</script>
 </body>
 </html>
