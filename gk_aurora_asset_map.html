@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grand Kahn — Aurora Solar Bus Depot — 4-Week Asset Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Archivo:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #990000;
+  --maroon: #990000;
+  --red-dim: rgba(153,0,0,0.12);
+  --black: #0a0a0c;
+  --surface: #141416;
+  --surface2: #1b1b1e;
+  --surface3: #232326;
+  --paper: #e9eaec;
+  --muted: #6d6f75;
+  --border: rgba(255,255,255,0.06);
+
+  --ready: #2a7a4b;   --ready-bg: rgba(42,122,75,0.12);   --ready-text: #5cba88;
+  --cut:   #7a5a1a;   --cut-bg:   rgba(232,184,75,0.10);  --cut-text:  #e0b04a;
+  --vo:    #1a4a7a;   --vo-bg:    rgba(80,140,220,0.10);  --vo-text:   #7aadee;
+  --graphic:#5a1a7a;  --graphic-bg:rgba(160,80,220,0.10); --graphic-text:#bb88ee;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--black); color:var(--paper); font-family:'Inter',sans-serif; font-weight:300; font-size:13px; line-height:1.5; }
+
+.header { background:var(--surface); border-bottom:1px solid var(--border); padding:26px 32px 20px; position:sticky; top:0; z-index:100; }
+.header-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px; }
+.header-title { font-family:'Archivo',sans-serif; font-weight:700; font-size:21px; letter-spacing:-0.01em; }
+.header-title span { color:var(--red); }
+.header-sub { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted); margin-top:6px; line-height:1.8; }
+.header-meta { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted); text-align:right; line-height:1.8; }
+.header-meta b { color:var(--paper); font-weight:500; }
+
+.stats-bar { display:flex; gap:2px; margin-bottom:18px; }
+.stat-pill { background:var(--surface2); padding:8px 14px; flex:1; text-align:center; }
+.stat-pill .num { font-family:'Archivo',sans-serif; font-weight:700; font-size:20px; color:var(--red); display:block; line-height:1; }
+.stat-pill .lbl { font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; }
+
+.legend { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:14px; }
+.legend-item { display:flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted); }
+.legend-dot { width:8px; height:8px; border-radius:50%; }
+
+.filters { display:flex; gap:10px; flex-wrap:wrap; }
+.filter-group { display:flex; gap:4px; align-items:center; }
+.filter-label { font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-right:2px; }
+.filter-btn { background:var(--surface2); border:1px solid var(--border); color:var(--muted); font-family:'JetBrains Mono',monospace; font-size:10px; padding:4px 10px; cursor:pointer; border-radius:2px; transition:all .15s; letter-spacing:0.05em; }
+.filter-btn:hover { border-color:var(--red); color:var(--red); }
+.filter-btn.active { background:var(--red-dim); border-color:var(--red); color:#d97070; }
+
+.main { padding:0 32px 56px; max-width:1200px; }
+
+.week-block { margin-top:34px; }
+.week-header { display:flex; align-items:baseline; gap:14px; padding:12px 0 10px; border-bottom:1px solid rgba(153,0,0,0.3); margin-bottom:2px; }
+.week-num { font-family:'Archivo',sans-serif; font-weight:700; font-size:28px; color:var(--red); opacity:0.35; line-height:1; }
+.week-title { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--paper); letter-spacing:0.12em; text-transform:uppercase; }
+.week-theme { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted); }
+
+.post-row { display:grid; grid-template-columns:64px 92px 160px 1fr 120px; gap:14px; padding:16px 0; border-bottom:1px solid var(--border); align-items:start; }
+.post-row:hover { background:var(--surface); }
+.post-num { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted); padding-top:2px; }
+.post-num b { display:block; color:var(--paper); font-size:12px; font-weight:500; }
+.day-badge { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); border:1px solid var(--border); border-radius:2px; padding:3px 7px; display:inline-block; }
+
+.platform-badge { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.06em; padding:3px 8px; border-radius:2px; display:inline-block; }
+.p-mike { background:rgba(153,0,0,0.10); color:#d98585; border:1px solid rgba(153,0,0,0.35); }
+.p-company { background:rgba(153,0,0,0.14); color:#d09090; border:1px solid rgba(153,0,0,0.5); }
+
+.type-tag { font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--muted); display:block; margin-top:5px; letter-spacing:0.08em; }
+
+.post-hook { font-size:13.5px; font-weight:500; color:var(--paper); margin-bottom:6px; }
+.post-note { font-size:12px; color:var(--muted); margin-bottom:8px; }
+.source-strip { border-left:2px solid var(--surface3); padding:4px 10px; margin-top:6px; }
+.said { font-size:11.5px; color:#9a9da3; font-style:italic; }
+.said b { color:var(--paper); font-style:normal; font-weight:500; }
+.src { font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--muted); display:block; margin-top:3px; }
+
+.prod-badge { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.06em; padding:3px 8px; border-radius:2px; display:inline-block; margin-bottom:6px; }
+.s-cut { background:var(--cut-bg); color:var(--cut-text); border:1px solid var(--cut); }
+.s-vo { background:var(--vo-bg); color:var(--vo-text); border:1px solid var(--vo); }
+.s-graphic { background:var(--graphic-bg); color:var(--graphic-text); border:1px solid var(--graphic); }
+.s-ready { background:var(--ready-bg); color:var(--ready-text); border:1px solid var(--ready); }
+
+.flag { font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#e0b04a; background:rgba(232,184,75,0.07); border:1px solid rgba(232,184,75,0.25); border-radius:2px; padding:4px 8px; margin-top:8px; display:inline-block; }
+.flag.hard { color:#ff8a7a; background:rgba(220,90,70,0.08); border-color:rgba(220,90,70,0.3); }
+
+.gates { background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--red); padding:16px 20px; margin-top:36px; }
+.gates h3 { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--red); margin-bottom:10px; }
+.gates li { font-size:12px; color:#9a9da3; margin:6px 0 6px 16px; }
+.gates b { color:var(--paper); font-weight:500; }
+.no-results { display:none; padding:40px 0; text-align:center; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-title">AURORA SOLAR BUS DEPOT <span>— 4-WEEK ASSET MAP</span></div>
+      <div class="header-sub">GRAND KAHN ELECTRIC · EV CHARGING + SOLAR CARPORT · TURNKEY, TWO PHASES · DISTRICT UNNAMED IN ALL COPY<br>
+      HERO FILM (MIKE-APPROVED) = CERTAINTY LAYER ON YOUTUBE · REELS + POSTS FUNNEL TO IT</div>
+    </div>
+    <div class="header-meta">
+      CADENCE: <b>MON / WED</b> POSTS · <b>TUE / THU</b> REELS<br>
+      VOICES: <b>IVAN MILIVOJEVIC</b> PE · <b>JEFF SCHUMACHER*</b> GF · <b>SAM SPRINGSTEEN</b> PM<br>
+      *SPELLING UNCONFIRMED — SEE GATES
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-pill"><span class="num">16</span><span class="lbl">Assets</span></div>
+    <div class="stat-pill"><span class="num">8</span><span class="lbl">Reels</span></div>
+    <div class="stat-pill"><span class="num">4</span><span class="lbl">Mike Posts</span></div>
+    <div class="stat-pill"><span class="num">4</span><span class="lbl">Company Posts</span></div>
+    <div class="stat-pill"><span class="num">4</span><span class="lbl">Weeks</span></div>
+    <div class="stat-pill"><span class="num">1</span><span class="lbl">Hero Film</span></div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="legend-dot" style="background:var(--cut-text)"></span>CUT — edit from shoot footage</div>
+    <div class="legend-item"><span class="legend-dot" style="background:var(--vo-text)"></span>AI VO — scripted voice over B-roll</div>
+    <div class="legend-item"><span class="legend-dot" style="background:var(--graphic-text)"></span>GRAPHIC — designed card / text asset</div>
+    <div class="legend-item"><span class="legend-dot" style="background:var(--ready-text)"></span>READY — approved source, no gate</div>
+  </div>
+
+  <div class="filters">
+    <div class="filter-group">
+      <span class="filter-label">Channel</span>
+      <button class="filter-btn active" data-filter="all" data-group="channel">ALL</button>
+      <button class="filter-btn" data-filter="mike" data-group="channel">MIKE CASTO</button>
+      <button class="filter-btn" data-filter="company" data-group="channel">COMPANY PAGE</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Type</span>
+      <button class="filter-btn active" data-filter="all" data-group="type">ALL</button>
+      <button class="filter-btn" data-filter="reel" data-group="type">REELS</button>
+      <button class="filter-btn" data-filter="post" data-group="type">WRITTEN</button>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ═══════════ WEEK 1 ═══════════ -->
+  <div class="week-block">
+    <div class="week-header">
+      <span class="week-num">01</span>
+      <span class="week-title">The Job</span>
+      <span class="week-theme">— what we built and why it's two phases</span>
+    </div>
+
+    <div class="post-row" data-channel="company" data-type="post">
+      <div class="post-num">W1<b>A1</b></div>
+      <div><span class="day-badge">Mon</span></div>
+      <div><span class="platform-badge p-company">GK COMPANY PAGE</span><span class="type-tag">WRITTEN POST</span></div>
+      <div>
+        <div class="post-hook">"Turnkey means one throat to choke."</div>
+        <div class="post-note">Project intro. A school district needed its bus fleet electrified — chargers, then a solar carport that feeds the chargers. One contractor, both phases, no finger-pointing between vendors. Sets the table for four weeks. Ends: hero film link.</div>
+        <div class="source-strip"><span class="said"><b>Ivan:</b> "…a turnkey installation that we provided for a local school district, EV charging for their busses, along with a solar installation to provide power to these EV chargers."</span><span class="src">SRC: HERO 00:06–00:24</span></div>
+      </div>
+      <div><span class="prod-badge s-ready">READY</span></div>
+    </div>
+
+    <div class="post-row" data-channel="company" data-type="reel">
+      <div class="post-num">W1<b>R1</b></div>
+      <div><span class="day-badge">Tue</span></div>
+      <div><span class="platform-badge p-company">GK COMPANY PAGE</span><span class="type-tag">REEL 01 · ~35s</span></div>
+      <div>
+        <div class="post-hook">REEL — "The Whole Job" (hero cutdown)</div>
+        <div class="post-note">Vertical cutdown of the approved hero: Ivan's turnkey open → carport reveal → "back feed their service." Captions burned in. The certainty layer, compressed.</div>
+        <div class="source-strip"><span class="said"><b>Ivan:</b> "We're here in Aurora at a turnkey installation…" → <b>Jeff:</b> "…fully furnished with solar panels, which is now going to help back feed their service."</span><span class="src">SRC: HERO FILM (APPROVED) 00:05–00:31</span></div>
+      </div>
+      <div><span class="prod-badge s-cut">CUT</span></div>
+    </div>
+
+    <div class="post-row" data-channel="mike" data-type="post">
+      <div class="post-num">W1<b>A2</b></div>
+      <div><span class="day-badge">Wed</span></div>
+      <div><span class="platform-badge p-mike">MIKE CASTO</span><span class="type-tag">WRITTEN POST</span></div>
+      <div>
+        <div class="post-hook">"School buses don't get extensions."</div>
+        <div class="post-note">Mike's register — understated. The deadline wasn't a contract date, it was the first day of school. Why critical-load thinking applies to a bus yard the same as a hospital: the load can't fail on the day it matters. No cape.</div>
+        <div class="source-strip"><span class="said"><b>Sam:</b> "They got school starting in the beginning of August and we need to be done by that."</span><span class="src">SRC: INTV_SAM 01:26</span></div>
+      </div>
+      <div><span class="prod-badge s-ready">READY</span></div>
+    </div>
+
+    <div class="post-row" data-channel="mike" data-type="reel">
+      <div class="post-num">W1<b>R2</b></div>
+      <div><span class="day-badge">Thu</span></div>
+      <div><span class="platform-badge p-mike">MIKE CASTO</span><span class="type-tag">REEL 02 · ~30s</span></div>
+      <div>
+        <div class="post-hook">REEL — "Two Phases" (Jeff explains the system)</div>
+        <div class="post-note">Jeff walks it: phase one bus chargers → phase two solar carport that back-feeds the service and "takes stress off their finances." Mike shares with one-line intro: "This is how my guys explain it better than I can."</div>
+        <div class="source-strip"><span class="said"><b>Jeff:</b> "After phase one, which was the initial install of the bus chargers themselves, they went onto phase two, which provided this carport…"</span><span class="src">SRC: INTV_JEFF 00:00–00:52</span></div>
+      </div>
+      <div><span class="prod-badge s-cut">CUT</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ WEEK 2 ═══════════ -->
+  <div class="week-block">
+    <div class="week-header">
+      <span class="week-num">02</span>
+      <span class="week-title">The Craft</span>
+      <span class="week-theme">— strings, MC4s, and why nothing gets turned on early</span>
+    </div>
+
+    <div class="post-row" data-channel="mike" data-type="post">
+      <div class="post-num">W2<b>A3</b></div>
+      <div><span class="day-badge">Mon</span></div>
+      <div><span class="platform-badge p-mike">MIKE CASTO</span><span class="type-tag">WRITTEN POST</span></div>
+      <div>
+        <div class="post-hook">"We don't turn anything on until QC says so."</div>
+        <div class="post-note">Craftsmanship post. The unglamorous sequence — wire management, labeling, quality control — before a single panel gets plugged in. Restraint as the flex: anyone can energize; professionals verify first.</div>
+        <div class="source-strip"><span class="said"><b>Jeff:</b> "…we'll be starting our quality control here pretty soon before we start plugging anything in or turning anything on."</span><span class="src">SRC: INTV_JEFF 01:41 / HERO 00:31–00:53</span></div>
+      </div>
+      <div><span class="prod-badge s-ready">READY</span></div>
+    </div>
+
+    <div class="post-row" data-channel="company" data-type="reel">
+      <div class="post-num">W2<b>R3</b></div>
+      <div><span class="day-badge">Tue</span></div>
+      <div><span class="platform-badge p-company">GK COMPANY PAGE</span><span class="type-tag">REEL 03 · ~30s</span></div>
+      <div>
+        <div class="post-hook">REEL — "Strings &amp; MC4s" (hands close-up)</div>
+        <div class="post-note">Macro B-roll of tie-ins, connectors, combiner controls. AI VO (scripted, plain): what a string is, what an MC4 does, why the last 10% is cable management. Educational, zero hype.</div>
+        <div class="source-strip"><span class="said"><b>Jeff:</b> "We're literally at the point where we're tying in strings and putting on MC4 connectors."</span><span class="src">SRC: INTV_JEFF 01:41 + AURORA B-ROLL</span></div>
+      </div>
+      <div><span class="prod-badge s-vo">AI VO</span></div>
+    </div>
+
+    <div class="post-row" data-channel="company" data-type="post">
+      <div class="post-num">W2<b>A4</b></div>
+      <div><span class="day-badge">Wed</span></div>
+      <div><span class="platform-badge p-company">GK COMPANY PAGE</span><span class="type-tag">WRITTEN POST</span></div>
+      <div>
+        <div class="post-hook">Crew spotlight: the solar specialist.</div>
+        <div class="post-note">Jeff feature. General foreman, runs the solar scope, praised on camera by his PE. Company page gets to brag so Jeff doesn't have to. Photo card + 3 lines.</div>
+        <div class="source-strip"><span class="said"><b>Ivan:</b> "Jeff's a fantastic electrician. This is not only professional but looks very esthetically pleasing."</span><span class="src">SRC: INTV_SAM 01:41 / INTV_JEFF 02:46</span></div>
+        <div class="flag hard">GATE: surname spelling — spoken "Schumacher," filename says "Shoemaker." Confirm before lower-third or name card renders.</div>
+      </div>
+      <div><span class="prod-badge s-graphic">GRAPHIC</span></div>
+    </div>
+
+    <div class="post-row" data-channel="mike" data-type="reel">
+      <div class="post-num">W2<b>R4</b></div>
+      <div><span class="day-badge">Thu</span></div>
+      <div><span class="platform-badge p-mike">MIKE CASTO</span><span class="type-tag">REEL 04 · ~25s</span></div>
+      <div>
+        <div class="post-hook">REEL — "Aesthetically Pleasing" (the compliment reel)</div>
+        <div class="post-note">Ivan admiring the install intercut with the cleanest wide shots. A PE calling conduit "aesthetically pleasing" IS the brand voice — pride without volume.</div>
+        <div class="source-strip"><span class="said"><b>Ivan:</b> "Really clean installation. Jeff did a great job… not only professional but looks very esthetically pleasing."</span><span class="src">SRC: INTV_SAM 01:41</span></div>
+      </div>
+      <div><span class="prod-badge s-cut">CUT</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ WEEK 3 ═══════════ -->
+  <div class="week-block">
+    <div class="week-header">
+      <span class="week-num">03</span>
+      <span class="week-title">The Discipline</span>
+      <span class="week-theme">— hours, materials, and a deadline set by a school bell</span>
+    </div>
+
+    <div class="post-row" data-channel="mike" data-type="post">
+      <div class="post-num">W3<b>A5</b></div>
+      <div><span class="day-badge">Mon</span></div>
+      <div><span class="platform-badge p-mike">MIKE CASTO</span><span class="type-tag">WRITTEN POST</span></div>
+      <div>
+        <div class="post-hook">"No unforeseen expenses" is a sentence you earn.</div>
+        <div class="post-note">Budget discipline post. On-camera, unprompted, the PM said materials came in with zero surprises. That's not luck — it's pre-construction, procurement, and planning. 119 years of not surprising customers.</div>
+        <div class="source-strip"><span class="said"><b>Sam:</b> "There hasn't been any unforeseen expenses that we didn't expect so far. We're right on track."</span><span class="src">SRC: INTV_SAM 00:48 / HERO 00:53</span></div>
+      </div>
+      <div><span class="prod-badge s-ready">READY</span></div>
+    </div>
+
+    <div class="post-row" data-channel="company" data-type="reel">
+      <div class="post-num">W3<b>R5</b></div>
+      <div><span class="day-badge">Tue</span></div>
+      <div><span class="platform-badge p-company">GK COMPANY PAGE</span><span class="type-tag">REEL 05 · ~30s</span></div>
+      <div>
+        <div class="post-hook">REEL — "The Walkthrough" (PE × PM check-in)</div>
+        <div class="post-note">Ivan and Sam's status exchange cut as a rhythm piece: hours ✓ materials ✓ timeline ✓. This is what managed looks like. End card: "On budget. On schedule. On purpose."</div>
+        <div class="source-strip"><span class="said"><b>Ivan:</b> "How are we doing on job hours?" <b>Sam:</b> "We're moving very well out here… right in line with where our estimate had us."</span><span class="src">SRC: INTV_SAM 00:27–01:06</span></div>
+        <div class="flag hard">EDIT GATE: Sam names "West Aurora" at 00:33 — district stays unnamed. Cut around it or use the alternate take.</div>
+      </div>
+      <div><span class="prod-badge s-cut">CUT</span></div>
+    </div>
+
+    <div class="post-row" data-channel="company" data-type="post">
+      <div class="post-num">W3<b>A6</b></div>
+      <div><span class="day-badge">Wed</span></div>
+      <div><span class="platform-badge p-company">GK COMPANY PAGE</span><span class="type-tag">WRITTEN POST</span></div>
+      <div>
+        <div class="post-hook">Crew spotlight: the project manager.</div>
+        <div class="post-note">Sam feature — three years in, running a two-phase energy job solo. The pipeline story: this is how Grand Kahn builds people, not just projects. Photo card + 3 lines.</div>
+        <div class="source-strip"><span class="said"><b>Sam:</b> "I've been with Grand Kahn for three years now. I'm the project manager running this project."</span><span class="src">SRC: INTV_SAM 00:00–00:27</span></div>
+      </div>
+      <div><span class="prod-badge s-graphic">GRAPHIC</span></div>
+    </div>
+
+    <div class="post-row" data-channel="mike" data-type="reel">
+      <div class="post-num">W3<b>R6</b></div>
+      <div><span class="day-badge">Thu</span></div>
+      <div><span class="platform-badge p-mike">MIKE CASTO</span><span class="type-tag">REEL 06 · ~25s</span></div>
+      <div>
+        <div class="post-hook">REEL — "The Real Deadline" (school starts in August)</div>
+        <div class="post-note">Sam and Jeff both land the same beat unprompted: done before the buses roll. Cut their two versions back-to-back — when the whole crew says the same thing, that's culture, not messaging.</div>
+        <div class="source-strip"><span class="said"><b>Jeff:</b> "…we had to make sure we get this completed before the school busses needed to get running again."</span><span class="src">SRC: INTV_JEFF 02:22 / INTV_SAM 01:26 / HERO 00:53–01:06</span></div>
+      </div>
+      <div><span class="prod-badge s-cut">CUT</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ WEEK 4 ═══════════ -->
+  <div class="week-block">
+    <div class="week-header">
+      <span class="week-num">04</span>
+      <span class="week-title">The Payoff</span>
+      <span class="week-theme">— back-feeding the grid, finishing early, and where this points</span>
+    </div>
+
+    <div class="post-row" data-channel="company" data-type="post">
+      <div class="post-num">W4<b>A7</b></div>
+      <div><span class="day-badge">Mon</span></div>
+      <div><span class="platform-badge p-company">GK COMPANY PAGE</span><span class="type-tag">WRITTEN POST</span></div>
+      <div>
+        <div class="post-hook">The carport pays the district back.
+        </div>
+        <div class="post-note">Outcome post. Solar back-feeds the service, offsets the cost of charging the fleet, eases the budget of a public school district. Public money, working harder. Hero film embedded.</div>
+        <div class="source-strip"><span class="said"><b>Jeff:</b> "…which will help take some of the stress off of their finances, basically charging the busses for what they need to do."</span><span class="src">SRC: INTV_JEFF 00:25–00:52</span></div>
+      </div>
+      <div><span class="prod-badge s-ready">READY</span></div>
+    </div>
+
+    <div class="post-row" data-channel="mike" data-type="reel">
+      <div class="post-num">W4<b>R7</b></div>
+      <div><span class="day-badge">Tue</span></div>
+      <div><span class="platform-badge p-mike">MIKE CASTO</span><span class="type-tag">REEL 07 · ~35s</span></div>
+      <div>
+        <div class="post-hook">REEL — "Sun → Panel → Charger → Bus" (the loop)</div>
+        <div class="post-note">Motion-graphic energy-flow diagram over drone/wide B-roll, AI VO in plain language: the district now generates some of what its fleet burns. GK maroon/red diagram language, matches site.</div>
+        <div class="source-strip"><span class="said"><b>Jeff:</b> "…fully furnished with solar panels, which is now going to help back feed their service."</span><span class="src">SRC: HERO 00:25–00:31 + B-ROLL</span></div>
+      </div>
+      <div><span class="prod-badge s-vo">AI VO</span></div>
+    </div>
+
+    <div class="post-row" data-channel="mike" data-type="post">
+      <div class="post-num">W4<b>A8</b></div>
+      <div><span class="day-badge">Wed</span></div>
+      <div><span class="platform-badge p-mike">MIKE CASTO</span><span class="type-tag">WRITTEN POST</span></div>
+      <div>
+        <div class="post-hook">"We were fully planned. So we finished early."</div>
+        <div class="post-note">The wrap, in Mike's register. Pre-construction walkthrough → material staged day one → weeks ahead of plan. Closes the arc: pre-construction discipline is why the schedule beat itself. The EV story ends where it started — a district that needed it done before the buses rolled, and got it early.</div>
+        <div class="source-strip"><span class="said"><b>Jeff:</b> "Everything from project management to material ordering to execution on site went without a hitch… this will get completed weeks before we were planned."</span><span class="src">SRC: INTV_JEFF 03:11–03:44</span></div>
+      </div>
+      <div><span class="prod-badge s-ready">READY</span></div>
+    </div>
+
+    <div class="post-row" data-channel="company" data-type="reel">
+      <div class="post-num">W4<b>R8</b></div>
+      <div><span class="day-badge">Thu</span></div>
+      <div><span class="platform-badge p-company">GK COMPANY PAGE</span><span class="type-tag">REEL 08 · ~40s</span></div>
+      <div>
+        <div class="post-hook">REEL — "Weeks Early" (finale → hero film)</div>
+        <div class="post-note">Best-of montage, Jeff's "without a hitch" as the spine, ends on the tagline card: The Power That Can't Go Down · Since 1907 → full film on YouTube. The four-week funnel closes where the certainty layer lives.</div>
+        <div class="source-strip"><span class="said"><b>Jeff:</b> "We were fully planned, we were organized… this will get completed weeks before we were planned."</span><span class="src">SRC: INTV_JEFF 03:11–03:44 + HERO + BEST B-ROLL</span></div>
+      </div>
+      <div><span class="prod-badge s-cut">CUT</span></div>
+    </div>
+  </div>
+
+  <div class="no-results">NO ASSETS MATCH THE CURRENT FILTERS</div>
+
+  <div class="gates">
+    <h3>Live Notes</h3>
+    <ul>
+      <li><b>"West Aurora"</b> audible in INTV_SAM ~00:33 — flagged for Mike in the deliverable; his call on the take.</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+const state = { channel:'all', type:'all' };
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const group = btn.dataset.group;
+    state[group] = btn.dataset.filter;
+    document.querySelectorAll(`.filter-btn[data-group="${group}"]`).forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    apply();
+  });
+});
+function apply(){
+  let visible = 0;
+  document.querySelectorAll('.post-row').forEach(row => {
+    const ok = (state.channel==='all' || row.dataset.channel===state.channel)
+            && (state.type==='all' || row.dataset.type===state.type);
+    row.style.display = ok ? '' : 'none';
+    if (ok) visible++;
+  });
+  document.querySelectorAll('.week-block').forEach(wb => {
+    const any = [...wb.querySelectorAll('.post-row')].some(r => r.style.display !== 'none');
+    wb.style.display = any ? '' : 'none';
+  });
+  document.querySelector('.no-results').style.display = visible ? 'none' : 'block';
+}
+</script>
+</body>
+</html>
