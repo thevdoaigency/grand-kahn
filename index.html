@@ -38,89 +38,36 @@
   .wordmark span{color:var(--red)}
   .tagbar{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#a8a8a8}
 
-  /* ---- hero ---- */
-  .hero{background:var(--paper);color:var(--ink);padding:74px 0 66px;border-bottom:1px solid var(--line)}
-  .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:22px}
+  /* ---- hero (slim) ---- */
+  .hero{background:var(--paper);color:var(--ink);padding:56px 0 44px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:20px}
   .hero h1{
-    font-family:Georgia,serif;
-    font-weight:700;
-    font-size:clamp(34px,6vw,62px);
-    line-height:1.04;
-    letter-spacing:-.01em;
-    max-width:16ch;
-    color:var(--ink);
+    font-family:Georgia,serif;font-weight:700;
+    font-size:clamp(30px,5vw,50px);line-height:1.04;letter-spacing:-.01em;
+    max-width:18ch;color:var(--ink);
   }
   .hero h1 em{color:var(--red);font-style:normal}
-  .anchor{
-    margin-top:30px;
-    font-size:clamp(17px,2.4vw,21px);
-    color:#4a4844;
-    max-width:52ch;
-    border-left:3px solid var(--red);
-    padding-left:18px;
-    font-style:italic;
-  }
-  .anchor b{color:var(--ink);font-style:normal}
-  .anchor .muted{color:var(--gray)}
+  .hero .status{margin-top:20px;font-size:16px;color:#4a4844;max-width:60ch}
+  .hero .status b{color:var(--ink)}
+  .hero .status .go{display:inline-block;background:#e7efe4;color:#2f6b34;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:2px;margin-right:8px}
 
   /* ---- section scaffolding ---- */
-  section{padding:64px 0;border-bottom:1px solid var(--line)}
-  .kicker{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  .kicker{display:flex;align-items:center;gap:14px;margin-bottom:26px}
   .kicker .n{font-family:Georgia,serif;color:var(--red);font-size:15px;font-weight:700;letter-spacing:.1em}
   .kicker h2{font-size:13px;letter-spacing:.24em;text-transform:uppercase;font-weight:700}
-  .lead{font-size:clamp(20px,3vw,27px);font-family:Georgia,serif;line-height:1.35;max-width:36ch}
-  .lead .red{color:var(--red)}
-  p.body{max-width:60ch;margin-top:18px;color:#33312e;font-size:16.5px}
-  .muted{color:var(--gray)}
 
-  /* the question block */
-  .question{background:#fbf4ee;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .question .kicker h2{color:var(--red-deep)}
-  .question .lead .red{color:var(--red)}
-  .qnote{margin-top:22px;color:#5a554d;max-width:58ch;font-size:15.5px}
-  .qnote b{color:var(--ink)}
-
-  /* pills */
-  .pill{display:inline-block;background:var(--pill);color:#3a3833;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 11px;border-radius:2px;margin:0 6px 8px 0}
-  .pill.live{background:var(--red);color:#fff}
-  .pill.hold{background:#e3ddd2;color:#8a6a1a}
-
-  /* asset cards */
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:8px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:24px;display:flex;flex-direction:column}
-  .card h3{font-family:Georgia,serif;font-size:20px;margin:12px 0 8px;line-height:1.2}
-  .card p{font-size:14.5px;color:#4a4844;flex:1}
-  .card .meta{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-top:16px;font-weight:700}
-
-  /* project list */
-  .projects{margin-top:10px;border-top:1px solid var(--line)}
-  .proj{display:grid;grid-template-columns:1fr auto;gap:12px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
-  .proj .name{font-family:Georgia,serif;font-size:19px}
-  .proj .what{color:var(--gray);font-size:14px;grid-column:1/-1;margin-top:2px}
-  .proj .yr{color:var(--red);font-weight:700;font-size:13px;letter-spacing:.08em}
-
-  /* thought-leadership pipeline */
-  .lineage{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 26px}
-  .lineage span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 11px;border-radius:2px}
-  .lineage .done{background:var(--ink);color:#fff}
-  .lineage .sched{background:var(--pill);color:#3a3833}
-  .lineage .you{background:var(--red);color:#fff}
-  .pipe{border-top:1px solid var(--line)}
-  .prow{display:grid;grid-template-columns:1fr 40px 1.5fr;gap:16px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
-  .prow .src{font-family:Georgia,serif;font-size:18px;line-height:1.25}
-  .prow .src small{display:block;font-family:"Helvetica Neue",Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-top:5px}
-  .prow .arrow{color:var(--red);font-size:22px;text-align:center;font-weight:700}
-  .prow .dst{font-size:15px;color:#4a4844}
-  .prow .dst .pill{margin-top:10px;margin-bottom:0}
-  @media(max-width:600px){.prow{grid-template-columns:1fr;gap:8px}.prow .arrow{display:none}}
-
-  /* deliverables / in-repo grid */
-  .repo{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:8px}
-  .rcard{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px;transition:transform .2s,border-color .2s,box-shadow .2s}
+  /* board grid */
+  .rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:8px;align-items:start}
+  .grouplab{grid-column:1/-1;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--gray);margin:20px 0 -2px;display:flex;align-items:center;gap:12px}
+  .grouplab::after{content:"";flex:1;height:1px;background:var(--line)}
+  .grouplab:first-child{margin-top:0}
+  .grouplab .cnt{color:#a8a49b;font-weight:700}
+  .rcard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px;transition:transform .2s,border-color .2s,box-shadow .2s}
   .rcard:hover{transform:translateY(-3px);border-color:var(--red);box-shadow:0 6px 18px rgba(0,0,0,.06)}
   .rcard .hit{display:flex;flex-direction:column;flex:1;text-decoration:none;color:inherit}
-  .rcard .rtype{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+  .rcard .rtype{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .rcard .rtype.livegreen{color:#2f6b34}
   .rcard .rtype .arw{color:var(--gray);font-weight:400}
   .rcard h3{font-family:Georgia,serif;font-size:19px;line-height:1.2;margin-bottom:8px}
   .rcard p{font-size:13.5px;color:#4a4844;flex:1}
@@ -136,34 +83,11 @@
   .approve-saved{font-size:10px;color:var(--gray);opacity:0;transition:opacity .3s;margin-top:4px;display:block}
   .approve-saved.show{opacity:1}
 
-  /* moves */
-  .move{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:26px 0;border-bottom:1px solid var(--line)}
-  .move:last-child{border-bottom:none}
-  .move .mn{font-family:Georgia,serif;font-size:38px;color:var(--line);font-weight:700;line-height:1}
-  .move h3{font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
-  .move p{color:#4a4844;font-size:15px;max-width:56ch}
-  .move .stat{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:10px;display:inline-block}
-  .move .stat.tbd{color:var(--gray)}
-
-  /* board */
-  .board{list-style:none}
-  .board li{padding:16px 0;border-bottom:1px solid var(--line);display:flex;gap:16px;align-items:baseline}
-  .board .own{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--gray);padding:3px 8px;border-radius:2px;font-weight:700;white-space:nowrap}
-  .board .own.mike{background:var(--red)}
-  .board .txt{font-size:16px}
-
-  /* emergency callout */
-  .siren{background:#fbeeee;border:1px solid #e6bcbc;border-left:4px solid var(--red);border-radius:4px;padding:22px 24px;margin-top:8px}
-  .siren h3{color:var(--red-deep);font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
-  .siren p{font-size:15px;color:#5a2020;max-width:60ch}
-
   footer{background:var(--ink);color:#8f8b83;padding:40px 0;font-size:13px}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
   footer b{color:#cfcbc3}
 
   @media(max-width:600px){
-    .move{grid-template-columns:1fr}
-    .move .mn{font-size:28px}
     .bar{flex-direction:column;align-items:flex-start;gap:4px}
   }
 </style>
@@ -180,49 +104,72 @@
 <div class="hero">
   <div class="wrap">
     <div class="eyebrow">Mike Casto · President, Grand Kahn Electric</div>
-    <h1>The power that <em>can't</em> go down. Since 1907.</h1>
-    <div class="anchor">
-      "We're not the biggest electrical contractor here in Chicago. <b>We've just been here the longest.</b>"
-      <span class="muted"> — your line, on camera, June 30. This whole page is built around it.</span>
-    </div>
+    <h1>The power that <em>can't</em> go down.</h1>
+    <p class="status"><span class="go">Committed</span> Deployed across the brand's touchpoints. This board tracks what's shipped and what's waiting on your sign-off — check <b>Approved</b> and leave a note on any card.</p>
   </div>
 </div>
 
-<!-- THE LIVE QUESTION -->
-<section class="question">
+<!-- THE BOARD -->
+<section>
   <div class="wrap">
-    <div class="kicker"><span class="n">◆</span><h2>The one question this page is built to answer</h2></div>
-    <p class="lead">Mike — is critical power the past you're <span class="red">proud of</span>, or the future you're <span class="red">building?</span></p>
-    <p class="qnote">
-      On camera, without being led there, you named healthcare and medical-office buildings as the bread and butter — City Hope, Rush Cancer. That's not a shop drifting toward heavy-load work. That's a shop that already sells <b>power that can't fail</b> and calls it hospitals. Data centers are that same muscle, sized up. So the first session is simple: we walk through the work you're proudest of and decide together whether "critical power" is the flag you want to plant. Everything below is scaffolding until we do.
-    </p>
-  </div>
-</section>
+    <div class="kicker"><span class="n">◆</span><h2>On the board — live artifacts</h2></div>
 
-<!-- IN THIS REPO -->
-<section class="repo">
-  <div class="wrap">
-    <div class="kicker"><span class="n">◆</span><h2>In this report — live artifacts</h2></div>
     <div class="rgrid">
+
+      <!-- ============ LIVE & DEPLOYED ============ -->
+      <div class="grouplab">Live &amp; deployed <span class="cnt">· shipped, public</span></div>
+
       <div class="rcard">
-        <a class="hit" href="grandkahn-landing-demo.html" target="_blank" rel="noopener">
-          <div class="rtype"><span>Page · Demo</span><span class="arw">open →</span></div>
-          <h3>Landing page — concept demo</h3>
-          <p>What grandkahn.com could be: critical-power thesis, founding year fixed to one number, live proof replacing the dead 2022 news.</p>
-          <div class="rfoot">Not for production</div>
+        <a class="hit" href="https://www.youtube.com/@GrandKahnChicago" target="_blank" rel="noopener">
+          <div class="rtype livegreen"><span>Channel · Live</span><span class="arw">open ↗</span></div>
+          <h3>YouTube — @GrandKahnChicago</h3>
+          <p>Channel established and live. The Aurora solar install video is the first post — public proof of the work, not a mockup.</p>
+          <div class="rfoot">Live · youtube.com</div>
         </a>
-        <div class="approve-block" data-item-id="landing-demo">
+        <div class="approve-block" data-item-id="youtube-aurora">
           <label class="approve-toggle"><input type="checkbox" class="approve-check"> Approved</label>
           <textarea class="approve-notes" rows="2" placeholder="Notes for Brandon…"></textarea>
           <span class="approve-saved">Saved</span>
         </div>
       </div>
+
+      <div class="rcard">
+        <a class="hit" href="https://grandkahn.com/about/" target="_blank" rel="noopener">
+          <div class="rtype livegreen"><span>Website · Live</span><span class="arw">open ↗</span></div>
+          <h3>Team headshots — About page</h3>
+          <p>New crew headshots added to grandkahn.com/about — the site's first real content update in years. The "still here, real people" proof.</p>
+          <div class="rfoot">Live · grandkahn.com</div>
+        </a>
+        <div class="approve-block" data-item-id="about-headshots">
+          <label class="approve-toggle"><input type="checkbox" class="approve-check"> Approved</label>
+          <textarea class="approve-notes" rows="2" placeholder="Notes for Brandon…"></textarea>
+          <span class="approve-saved">Saved</span>
+        </div>
+      </div>
+
+      <!-- ============ NEEDS APPROVAL ============ -->
+      <div class="grouplab">Needs approval <span class="cnt">· action on you</span></div>
+
+      <div class="rcard">
+        <a class="hit" href="https://thevdoaigency.github.io/grand-kahn/gk_aurora_written_posts.html" target="_blank" rel="noopener">
+          <div class="rtype"><span>Page · Needs approval</span><span class="arw">open ↗</span></div>
+          <h3>Aurora LinkedIn posts — written</h3>
+          <p>The drafted posts pulled from the Aurora hero video, matched to the asset map. Waiting on your green light before they go out.</p>
+          <div class="rfoot">Awaiting approval</div>
+        </a>
+        <div class="approve-block" data-item-id="aurora-written-posts">
+          <label class="approve-toggle"><input type="checkbox" class="approve-check"> Approved</label>
+          <textarea class="approve-notes" rows="2" placeholder="Notes for Brandon…"></textarea>
+          <span class="approve-saved">Saved</span>
+        </div>
+      </div>
+
       <div class="rcard">
         <a class="hit" href="mike-casto-launch-posts.html" target="_blank" rel="noopener">
           <div class="rtype"><span>Page · Drafts</span><span class="arw">open →</span></div>
           <h3>LinkedIn launch posts</h3>
-          <p>Four posts in Mike's voice — Category, Proof, Stakes, Forward flag. Publish gates flagged on each.</p>
-          <div class="rfoot">Working draft · for review</div>
+          <p>Four posts in your voice — Category, Proof, Stakes, Forward flag. In play. Publish gates flagged on each.</p>
+          <div class="rfoot">In play · for review</div>
         </a>
         <div class="approve-block" data-item-id="launch-posts">
           <label class="approve-toggle"><input type="checkbox" class="approve-check"> Approved</label>
@@ -230,218 +177,35 @@
           <span class="approve-saved">Saved</span>
         </div>
       </div>
+
+      
+
+      
+
+      <!-- ============ SOURCE & REFERENCE ============ -->
+      <div class="grouplab">Source &amp; reference <span class="cnt">· the raw material</span></div>
+
       <div class="rcard">
-        <a class="hit" href="https://thevdoaigency.github.io/grand-kahn/grand-kahn-ev-post-preview-mockup.html" target="_blank" rel="noopener">
-          <div class="rtype"><span>Page · Preview</span><span class="arw">open ↗</span></div>
-          <h3>EV post — "The Parking Code Just Changed"</h3>
-          <p>Current-news blog post in real grandkahn.com styling — the first live proof against a News section frozen since 2022.</p>
-          <div class="rfoot">Preview · legal check pending</div>
+        <a class="hit" href="https://thevdoaigency.github.io/grand-kahn/gk_aurora_asset_map.html" target="_blank" rel="noopener">
+          <div class="rtype"><span>Doc · Asset map</span><span class="arw">open ↗</span></div>
+          <h3>Aurora asset map — LinkedIn</h3>
+          <p>The content map built off the Aurora hero video: every clip and still matched to the post it feeds. The plan behind the written posts.</p>
+          <div class="rfoot">Reference</div>
         </a>
-        <div class="approve-block" data-item-id="ev-pilot-post">
+        <div class="approve-block" data-item-id="aurora-asset-map">
           <label class="approve-toggle"><input type="checkbox" class="approve-check"> Approved</label>
           <textarea class="approve-notes" rows="2" placeholder="Notes for Brandon…"></textarea>
           <span class="approve-saved">Saved</span>
         </div>
       </div>
-      <div class="rcard">
-        <a class="hit" href="https://drive.google.com/file/d/1XrtsEE9QwwAmYyc7LjGVHy3PE09htNen/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="rtype"><span>Reel · Video</span><span class="arw">open ↗</span></div>
-          <h3>Mike Casto — sample reel</h3>
-          <p>The June 30 Chicago interview. Anchor line, founding story, and the named-project reel in his own voice.</p>
-          <div class="rfoot">Google Drive · delivered</div>
-        </a>
-        <div class="approve-block" data-item-id="mike-reel">
-          <label class="approve-toggle"><input type="checkbox" class="approve-check"> Approved</label>
-          <textarea class="approve-notes" rows="2" placeholder="Notes for Brandon…"></textarea>
-          <span class="approve-saved">Saved</span>
-        </div>
-      </div>
-      <div class="rcard">
-        <a class="hit" href="https://drive.google.com/file/d/1ZNr4xSrCQOsfmKa7Pk3xN7sILpNs2-em/view?usp=sharing" target="_blank" rel="noopener">
-          <div class="rtype"><span>Reel · Video</span><span class="arw">open ↗</span></div>
-          <h3>Aurora EV bus facility — sample reel</h3>
-          <p>Turnkey install, three voices: Ivan on delivery, Jeff on craft, Sam on budget. The execution-discipline proof.</p>
-          <div class="rfoot">Google Drive · delivered</div>
-        </a>
-        <div class="approve-block" data-item-id="aurora-reel">
-          <label class="approve-toggle"><input type="checkbox" class="approve-check"> Approved</label>
-          <textarea class="approve-notes" rows="2" placeholder="Notes for Brandon…"></textarea>
-          <span class="approve-saved">Saved</span>
-        </div>
-      </div>
-      <div class="rcard">
-        <a class="hit" href="https://thevdoaigency.github.io/grand-kahn/grand-kahn-shoot-brief.html" target="_blank" rel="noopener">
-          <div class="rtype"><span>Doc · Shoot brief</span><span class="arw">open ↗</span></div>
-          <h3>Aurora shoot brief — the homework</h3>
-          <p>Greg's full shot guide behind the reel: every frame planned, modular vs. job-specific, plus the foreman interview question bank.</p>
-          <div class="rfoot">Paired with the Aurora reel</div>
-        </a>
-        <div class="approve-block" data-item-id="aurora-shoot-brief">
-          <label class="approve-toggle"><input type="checkbox" class="approve-check"> Approved</label>
-          <textarea class="approve-notes" rows="2" placeholder="Notes for Brandon…"></textarea>
-          <span class="approve-saved">Saved</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- THESIS -->
-<section>
-  <div class="wrap">
-    <div class="kicker"><span class="n">01</span><h2>The wedge</h2></div>
-    <p class="lead">Grand Kahn already builds <span class="red">critical-load power</span>. Nobody's said it out loud yet.</p>
-    <p class="body">Cancer imaging suites. Fleet EV infrastructure. A century of Chicago's electrical backbone. To a buyer these read as separate jobs. To an electrician they're one skill — power that stays up under load, on deadline, to code. The move is to name that capacity before the market goes short on contractors who have it. The EV and healthcare work isn't the pitch. It's the proof.</p>
-    <p class="body muted"><i>Placeholder framing — pending your confirmation on the target category. "Data center" is on the table as the horizon, not yet the headline.</i></p>
-  </div>
-</section>
+      
 
-<!-- PROOF ON TAPE -->
-<section>
-  <div class="wrap">
-    <div class="kicker"><span class="n">02</span><h2>Proof on tape</h2></div>
-    <div class="grid">
-      <div class="card">
-        <div><span class="pill live">Delivered</span></div>
-        <h3>EV Solar Bus Canopy — Aurora</h3>
-        <p>Turnkey install for a local school district — Phase 1 chargers, Phase 2 a solar carport that back-feeds to cut the district's power bill. Three voices on camera: Ivan (project exec) hosting, Jeff (foreman) on the craft, Sam (PM) on budget and the August deadline. The story is disciplined execution — on time, on budget, done early.</p>
-        <div class="meta">Shot last week · Turnkey · District stays unnamed</div>
-      </div>
-      <div class="card">
-        <div><span class="pill live">Delivered</span></div>
-        <h3>You, On Camera — Chicago</h3>
-        <p>June 30 interview. The anchor line, the founding story, and the named-project reel in your own voice: Tesla, City Hope, Rush, Radio Flier. Raw material for the whole thought-leadership run.</p>
-        <div class="meta">Interview footage · Voice source</div>
-      </div>
-      <div class="card">
-        <div><span class="pill hold">Blocked</span></div>
-        <h3>EV Pilot Post — "The Parking Code Just Changed"</h3>
-        <p>WordPress-ready, mockup complete. Held pending a legal check on the Illinois 40/50/70% parking-mandate claim. Unblocks the day the citations verify.</p>
-        <div class="meta">Written · Compliance gate</div>
-      </div>
-    </div>
-  </div>
-</section>
+      
 
-<!-- NAMED PROJECTS -->
-<section>
-  <div class="wrap">
-    <div class="kicker"><span class="n">03</span><h2>The reel — in your words</h2></div>
-    <div class="projects">
-      <div class="proj"><div class="name">Rush — Cancer Center</div><div class="yr">Lisle, IL</div><div class="what">New cancer facility for one of Chicagoland's largest medical providers. Critical-load healthcare.</div></div>
-      <div class="proj"><div class="name">City Hope — Imaging Upgrade</div><div class="yr">Chicago</div><div class="what">Cancer imaging build, covered across local news. "Super important — cancer research and diagnosis."</div></div>
-      <div class="proj"><div class="name">Tesla — Technician Training Facility</div><div class="yr">Melrose Park</div><div class="what">Full electrical build-out at Lincoln Tech. The recognizable name on the reel.</div></div>
-      <div class="proj"><div class="name">Radio Flyer — Flagship HQ</div><div class="yr">~2022</div><div class="what">Corporate brick-and-mortar flagship, Schaumburg. Legacy-into-modern proof point.</div></div>
-      <div class="proj"><div class="name">EV Fleet Charging Infrastructure</div><div class="yr">Recent</div><div class="what">Fleet charging locations across Illinois, riding state + federal incentive tailwinds.</div></div>
-    </div>
-  </div>
-</section>
+      
 
-<!-- THOUGHT LEADERSHIP -->
-<section>
-  <div class="wrap">
-    <div class="kicker"><span class="n">04</span><h2>Thought leadership</h2></div>
-    <p class="lead">The same engine already running for <span class="red">Curtis</span>, scheduled for <span class="red">Rob</span> — now pointed at you.</p>
-    <div class="lineage">
-      <span class="done">Proven · Curtis Leopardo</span>
-      <span class="sched">Scheduled · Rob Vollrath</span>
-      <span class="you">Now yours · Mike Casto</span>
     </div>
-    <p class="body">Every asset we've already got in hand becomes a post that goes out under your name. Nothing new to shoot to start — here's what the material we have turns into.</p>
-    <div class="pipe">
-      <div class="prow">
-        <div class="src">EV Solar Bus Canopy — Aurora<small>Reel · delivered · 3 voices</small></div>
-        <div class="arrow">→</div>
-        <div class="dst">Three posts from one shoot — Jeff on the craft, Sam on on-time/on-budget discipline, Ivan on turnkey delivery. Your "this is how power gets done right" set.<span class="pill">Queued</span></div>
-      </div>
-      <div class="prow">
-        <div class="src">You, On Camera — Chicago<small>Interview · delivered</small></div>
-        <div class="arrow">→</div>
-        <div class="dst">A run of posts from one shoot: the legacy piece ("here the longest"), and a critical-power case study each for Rush, City Hope, and Tesla.<span class="pill">Queued</span></div>
-      </div>
-      <div class="prow">
-        <div class="src">The Parking Code Just Changed<small>Written · pilot post</small></div>
-        <div class="arrow">→</div>
-        <div class="dst">Your first published piece — the Illinois EV parking mandate, in plain terms for building owners. Ready the moment the legal check clears.<span class="pill hold">Blocked · legal</span></div>
-      </div>
-    </div>
-    <p class="body muted"><i>Cadence, posting access, and voice all lock in the first session — same setup Rob just chose.</i></p>
-  </div>
-</section>
-
-<!-- THE LANE -->
-<section>
-  <div class="wrap">
-    <div class="kicker"><span class="n">05</span><h2>The lane</h2></div>
-    <div class="move">
-      <div class="mn">1</div>
-      <div>
-        <span class="stat">Now</span>
-        <h3>Establish the category</h3>
-        <p>Reframe the EV + healthcare + legacy work as one thing: critical-load electrical capacity. The proof exists — it's filed under the wrong headlines.</p>
-      </div>
-    </div>
-    <div class="move">
-      <div class="mn">2</div>
-      <div>
-        <span class="stat tbd">Needs a trigger</span>
-        <h3>Plant the flag</h3>
-        <p>A signature statement or project that names the ambition out loud. No public trigger yet — the internal one is real: Alan &amp; AJ named Grand Kahn the priority company. First visible win is the clock.</p>
-      </div>
-    </div>
-    <div class="move">
-      <div class="mn">3</div>
-      <div>
-        <span class="stat tbd">TBD</span>
-        <h3>Build the platform</h3>
-        <p>Find Grand Kahn's co-presenting partner — an engineering or design firm to stand beside on critical-power pursuits. Target the developers and owners building power-critical facilities in the Midwest.</p>
-      </div>
-    </div>
-    <div class="move">
-      <div class="mn">4</div>
-      <div>
-        <span class="stat tbd">TBD</span>
-        <h3>Own the room</h3>
-        <p>You're the first call in the Midwest when the power isn't allowed to fail.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- THE HARD RULE -->
-<section>
-  <div class="wrap">
-    <div class="kicker"><span class="n">06</span><h2>The one hard rule</h2></div>
-    <p class="lead">Lock the founding year before anything ships. <span class="red">The longevity claim is load-bearing.</span></p>
-    <p class="body">The whole position rests on "here the longest" and "Chicago's first registered electrical contractor." The site says 1907, 1928, and "117 years" in different places; on camera you said 119. That claim — <b>first registered, since 1907</b> — is the number that can't go out loose or wrong under your name. We verify "first registered," fix the founding year to one source, and nothing longevity-flavored publishes ahead of it.</p>
-    <p class="body muted"><i>Our candidate for your hard rule — confirm it in the first session.</i></p>
-  </div>
-</section>
-
-<!-- WEBSITE SIREN -->
-<section>
-  <div class="wrap">
-    <div class="kicker"><span class="n">07</span><h2>Standing emergency</h2></div>
-    <div class="siren">
-      <h3>The website is stuck in 2022</h3>
-      <p>News section dead since November 2022. For a shop whose entire pitch is being the steady, still-here name, a site frozen three years back reads as the opposite of the message. This gets triaged early — it actively undercuts the longevity story every day it stays up.</p>
-    </div>
-  </div>
-</section>
-
-<!-- OPEN ON THE BOARD -->
-<section>
-  <div class="wrap">
-    <div class="kicker"><span class="n">08</span><h2>Open on the board</h2></div>
-    <ul class="board">
-      <li><span class="own mike">You</span><span class="txt">Critical power — the past you're proud of, or the future you're building? The whole project hinges here.</span></li>
-      <li><span class="own mike">You</span><span class="txt">The hard rule — what can't be published without your sign-off.</span></li>
-      <li><span class="own">You + Brandon</span><span class="txt">The signature project — is there a proof point big enough to carry the platform move, or does one need building?</span></li>
-      <li><span class="own">Brandon</span><span class="txt">Founding year — nail 1907 to one source; verify "first registered electrical contractor."</span></li>
-      <li><span class="own">Brandon</span><span class="txt">Illinois parking-mandate legal check — blocks the EV pilot regardless of the larger campaign.</span></li>
-      <li><span class="own">Brandon → You</span><span class="txt">Posting access — hand over vs. draft-approval. Same choice Rob just made.</span></li>
-      <li><span class="own">Brandon</span><span class="txt">Grand Kahn's own visual skin — not a recolor of Rob's jersey. Draft in this page; refine.</span></li>
-    </ul>
   </div>
 </section>
 
