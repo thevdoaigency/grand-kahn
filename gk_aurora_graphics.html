@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurora Graphics — Designer &amp; Scheduler Guide · Grand Kahn Electric</title>
+<style>
+:root{
+  --ink:#161616; --paper:#f4f2ee; --red:#A32020; --red-deep:#7a1717; --brand:#990000;
+  --gray:#6b6b6b; --line:#d8d4cc; --pill:#e7e3db; --card:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55;padding:32px 16px}
+.sheet{max-width:980px;margin:0 auto;background:var(--card);padding:44px 48px 36px;border-radius:4px;border:1px solid var(--line)}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+h1{font-family:Georgia,serif;font-weight:700;font-size:32px;line-height:1.12;margin-top:8px}
+h1 .r{color:var(--red)}
+.rule{height:4px;width:64px;background:var(--red);margin:16px 0 18px;border-radius:2px}
+.lede{font-size:14.5px;color:#33312e;max-width:800px}
+h2{font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin:34px 0 12px;color:var(--red-deep)}
+
+.brief{background:#fbf4ee;border:1px solid var(--line);border-left:3px solid var(--red);padding:18px 22px;font-size:14px;max-width:840px}
+.brief p{margin-bottom:10px}
+.brief b{font-weight:700}
+
+.kit{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.kcard{border:1px solid var(--line);border-radius:4px;padding:14px 16px;font-size:12.5px}
+.kcard b{font-family:Georgia,serif;font-size:14px;display:block;margin-bottom:6px;color:var(--red-deep)}
+.sw{display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:-2px;margin-right:6px;border:1px solid var(--line)}
+
+.tmpl{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:6px}
+.tcard{background:var(--ink);color:#f4f2ee;border-radius:6px;padding:16px 18px;font-size:12.5px;line-height:1.6;border-top:3px solid var(--red)}
+.tcard b{font-family:Georgia,serif;color:#e08585;font-size:14px;display:block;margin-bottom:6px}
+.tcard i{color:#b8b4ac}
+
+.rhythm{border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:6px}
+.rhy-row{display:grid;grid-template-columns:90px 1fr;border-bottom:1px solid var(--line);font-size:13px}
+.rhy-row:last-child{border-bottom:none}
+.rhy-day{background:#faf8f4;padding:10px 14px;font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--red-deep);border-right:1px solid var(--line)}
+.rhy-what{padding:10px 14px}
+
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}
+th{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);text-align:left;padding:9px 10px 6px;border-bottom:1px solid var(--line);font-weight:700}
+td{padding:9px 10px;border-bottom:1px solid #eceae4;vertical-align:top}
+.aid{font-family:"Courier New",monospace;font-size:11px;font-weight:700;color:var(--red-deep);white-space:nowrap}
+.chan{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:3px 7px;border-radius:2px;display:inline-block;white-space:nowrap}
+.c-mike{background:var(--red);color:#fff}
+.c-co{background:var(--ink);color:#fff}
+.q{font-style:italic;color:#33312e}
+.q b{font-style:normal}
+.img{color:var(--gray);font-size:11.5px}
+.gate{background:#fdf3e6;color:#7a5a1a;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:3px 7px;border-radius:2px;display:inline-block;white-space:nowrap}
+.ok{background:#e0ece2;color:#2a6a42;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:3px 7px;border-radius:2px;display:inline-block}
+
+.rules{max-width:840px;font-size:13.5px}
+.rules li{margin:8px 0 8px 18px}
+.rules b{font-weight:700}
+.foot{margin-top:28px;border-top:1px solid var(--line);padding-top:12px;font-size:12px;color:var(--gray);display:flex;gap:16px;flex-wrap:wrap}
+@media(max-width:720px){.sheet{padding:28px 18px}}
+</style></head><body>
+<div class="sheet">
+  <div class="eyebrow">Grand Kahn Electric · Aurora Solar Bus Depot</div>
+  <h1>Graphics &amp; Scheduling — <span class="r">The Guide</span></h1>
+  <div class="rule"></div>
+  <p class="lede">Everything you need to design the 16 graphic posts and schedule the full 4-week Aurora series. The monday board (<b>Grand Kahn – Aurora</b>) is the source of truth — this page is the why and the how.</p>
+
+  <h2>01 · What This Project Is</h2>
+  <div class="brief">
+    <p><b>The job:</b> Grand Kahn Electric did a turnkey install for a school district near Aurora, IL — <b>Phase 1:</b> EV chargers for their bus fleet. <b>Phase 2:</b> a solar carport that powers those chargers and back-feeds the district's electrical service, offsetting their bill. Finished <b>weeks ahead of schedule</b>, before the school year started — the deadline was literally the first day of school.</p>
+    <p><b>The people:</b> Ivan Milivojevic (Project Executive — the on-camera host), Jeff (General Foreman, solar specialist), Sam Springsteen (Project Manager, 3 years with GK). Their real on-camera quotes are the raw material for most of your cards.</p>
+    <p><b>The hub:</b> a Mike-approved hero film lives on YouTube (<b>@GrandKahnChicago</b> — "Solar-Powered EV Bus Charging for a School District"). Every post in this series ultimately funnels people to it.</p>
+    <p><b>The one hard rule:</b> the school district is <b>never named</b> — not in copy, not in captions, not in alt text. It's always "a local school district."</p>
+  </div>
+
+  <h2>02 · Brand Kit</h2>
+  <div class="kit">
+    <div class="kcard"><b>Colors — from grandkahn.com</b>
+      <span class="sw" style="background:#990000"></span>#990000 logo maroon<br>
+      <span class="sw" style="background:#D90017"></span>#D90017 site accent red<br>
+      <span class="sw" style="background:#161616"></span>near-black backgrounds<br>
+      <span class="sw" style="background:#ffffff"></span>white text on dark
+    </div>
+    <div class="kcard"><b>Type</b>Georgia (or Fraunces-style serif) for quotes &amp; headlines · Inter 600/800 for labels, attribution, captions. Curly apostrophes ('), always.</div>
+    <div class="kcard"><b>Format</b>1080×1350 (4:5) for all LinkedIn graphics — matches the reels. Export PNG. Filename = Asset ID (e.g. 260831_GKE_Aurora_W1G1.png).</div>
+    <div class="kcard"><b>Voice</b>Understated. The restraint is the flex. No fire emojis, no exclamation points, no "🚀". A quote, a name, a red rule, done.</div>
+  </div>
+
+  <h2>03 · Three Card Templates</h2>
+  <div class="tmpl">
+    <div class="tcard"><b>A — Field Quote Card</b>Photo or frame-grab background (or clean photo panel), quote in Inter 800, thin red rule, attribution in Inter 600 caps: <i>NAME · ROLE, GRAND KAHN ELECTRIC</i>. Names/spellings exactly as the shoot lower-thirds. 10 of 16 cards.</div>
+    <div class="tcard"><b>B — Executive Quote Card</b>Mike Casto's line, ink-on-paper: dark (near-black) background like the site hero, Inter 800 quote, GK wordmark bottom right. Photo optional — these can be pure type. <i>4 of 16 — all gated until approved.</i></div>
+    <div class="tcard"><b>C — Fact Card</b>One company fact, one caption line, wordmark. The quietest of the three — think plaque, not ad. 1907 truck photo available for the then/now card. 4 of 16.</div>
+  </div>
+
+  <h2>04 · The Weekly Rhythm (you schedule all of it)</h2>
+  <div class="rhythm">
+    <div class="rhy-row"><div class="rhy-day">Mon</div><div class="rhy-what"><b>Company graphic</b> — the week's lead card (W1G1, W2G5, W3G9, W4G13)</div></div>
+    <div class="rhy-row"><div class="rhy-day">Tue</div><div class="rhy-what"><b>Reel</b> — video from the editor, post per its channel; if it's a funnel reel (R1, R8), YouTube link goes in the first comment, never the post body</div></div>
+    <div class="rhy-row"><div class="rhy-day">Wed</div><div class="rhy-what"><b>Mike essay</b> — written post on Mike's personal page (copy comes approved from Brandon)</div></div>
+    <div class="rhy-row"><div class="rhy-day">Thu</div><div class="rhy-what"><b>Reel</b> — second video of the week</div></div>
+    <div class="rhy-row"><div class="rhy-day">Fri</div><div class="rhy-what"><b>Graphics batch</b> — the remaining 3 cards for the week (stagger 9am / 12pm / 3pm CT, don't dump all at once)</div></div>
+  </div>
+
+  <h2>05 · All 16 Graphics — Build List</h2>
+  <table>
+    <tr><th>Asset ID</th><th>Posts</th><th>Ch.</th><th>Card</th><th>Quote / Fact + Image</th></tr>
+    <tr><td class="aid">260831_GKE_Aurora_W1G1</td><td>Mon 8/31</td><td><span class="chan c-co">LI-CO</span></td><td>A</td><td class="q">"A turnkey installation… EV charging for their buses, along with a solar installation." <b>— Ivan, PE</b><br><span class="img">Drone wide of carport, buses charging. Caption: One crew. Both phases. + YouTube link in comment.</span></td></tr>
+    <tr><td class="aid">260904_GKE_Aurora_W1G2</td><td>Fri 9/4</td><td><span class="chan c-co">LI-CO</span></td><td>A</td><td class="q">"After phase one — the bus chargers — they went onto phase two, the carport." <b>— Jeff, GF</b><br><span class="img">Diptych: chargers | carport, thin red divider. Caption: Phase one charges the buses. Phase two powers phase one.</span></td></tr>
+    <tr><td class="aid">260904_GKE_Aurora_W1G3</td><td>Fri 9/4</td><td><span class="chan c-mike">LI-MC</span></td><td>B</td><td class="q">"The buses run on sunlight now. The install ran on planning." <b>— Mike Casto</b><br><span class="img"><b style="color:#7a5a1a">HOLD — Mike gate, do not schedule until board says APPROVED.</b> B/W bus yard at dawn, Inter 800 quote over sky.</span></td></tr>
+    <tr><td class="aid">260904_GKE_Aurora_W1G4</td><td>Fri 9/4</td><td><span class="chan c-co">LI-CO</span></td><td>C</td><td class="q">Since 1907 — Chicago's first registered electrical contractor.<br><span class="img">Then/now: 1907 truck beside 2026 carport, red rule between.</span></td></tr>
+    <tr><td class="aid">260907_GKE_Aurora_W2G5</td><td>Mon 9/7</td><td><span class="chan c-co">LI-CO</span></td><td>A</td><td class="q">"We're literally at the point where we're tying in strings and putting on MC4 connectors." <b>— Jeff, GF</b><br><span class="img">Macro gloved hands, MC4 click. Caption folds in Jeff's scope: bare lot → panelized carport.</span></td></tr>
+    <tr><td class="aid">260911_GKE_Aurora_W2G6</td><td>Fri 9/11</td><td><span class="chan c-co">LI-CO</span></td><td>A</td><td class="q">"Not only professional — it looks very aesthetically pleasing." <b>— Ivan, PE, on Jeff's install</b><br><span class="img">Symmetrical under-carport wiring, one-point perspective.</span></td></tr>
+    <tr><td class="aid">260911_GKE_Aurora_W2G7</td><td>Fri 9/11</td><td><span class="chan c-mike">LI-MC</span></td><td>B</td><td class="q">"Anyone can turn a system on. We make sure it stays on." <b>— Mike Casto</b><br><span class="img"><b style="color:#7a5a1a">HOLD — Mike gate, do not schedule until board says APPROVED.</b> Torque wrench / QC checklist close-up, quote overlay.</span></td></tr>
+    <tr><td class="aid">260911_GKE_Aurora_W2G8</td><td>Fri 9/11</td><td><span class="chan c-co">LI-CO</span></td><td>C</td><td class="q">Every string tested before energization.<br><span class="img">Labeled inverter + combiner wall, straight-on. Caption: QC isn't a step. It's the spec.</span></td></tr>
+    <tr><td class="aid">260914_GKE_Aurora_W3G9</td><td>Mon 9/14</td><td><span class="chan c-co">LI-CO</span></td><td>A</td><td class="q">"There hasn't been any unforeseen expenses that we didn't expect. We're right on track." <b>— Sam Springsteen, PM</b><br><span class="img">Sam frame grab, quote right, red rule. Caption folds in: 3 years with GK, running a two-phase job.</span></td></tr>
+    <tr><td class="aid">260918_GKE_Aurora_W3G10</td><td>Fri 9/18</td><td><span class="chan c-co">LI-CO</span></td><td>A</td><td class="q">"They got school starting in the beginning of August, and we need to be done by that." <b>— Sam Springsteen, PM</b><br><span class="img">Empty bus yard at sunrise, long shadows. Caption: The real deadline had a bell.</span></td></tr>
+    <tr><td class="aid">260918_GKE_Aurora_W3G11</td><td>Fri 9/18</td><td><span class="chan c-mike">LI-MC</span></td><td>B</td><td class="q">"Budgets don't survive improvisation. Ours don't have to." <b>— Mike Casto</b><br><span class="img"><b style="color:#7a5a1a">HOLD — Mike gate, do not schedule until board says APPROVED.</b> Pure type: ink on paper, wordmark bottom right, no photo.</span></td></tr>
+    <tr><td class="aid">260918_GKE_Aurora_W3G12</td><td>Fri 9/18</td><td><span class="chan c-co">LI-CO</span></td><td>C</td><td class="q">Material staged on site from day one.<br><span class="img">Tidy staged pallets/spools, golden hour. Caption: Procurement is a schedule's best friend.</span></td></tr>
+    <tr><td class="aid">260921_GKE_Aurora_W4G13</td><td>Mon 9/21</td><td><span class="chan c-co">LI-CO</span></td><td>A</td><td class="q">"It helps take some of the stress off of their finances." <b>— Jeff, GF</b><br><span class="img">Panels with sun flare or meter running backward. Caption: The carport pays the district back.</span></td></tr>
+    <tr><td class="aid">260925_GKE_Aurora_W4G14</td><td>Fri 9/25</td><td><span class="chan c-co">LI-CO</span></td><td>A</td><td class="q">"This will get completed weeks before we were planned." <b>— Jeff, GF</b><br><span class="img">Wide of finished install, crew walking out of frame. Caption: Early isn't luck.</span></td></tr>
+    <tr><td class="aid">260925_GKE_Aurora_W4G15</td><td>Fri 9/25</td><td><span class="chan c-mike">LI-MC</span></td><td>B</td><td class="q">"We were done before the first bell." <b>— Mike Casto</b><br><span class="img"><b style="color:#7a5a1a">HOLD — Mike gate, do not schedule until board says APPROVED.</b> Bus pulling out from under the carport, morning light.</span></td></tr>
+    <tr><td class="aid">260925_GKE_Aurora_W4G16</td><td>Fri 9/25</td><td><span class="chan c-co">LI-CO</span></td><td>C</td><td class="q">Turnkey — design through energization, one contractor.<br><span class="img">GK wordmark card, red on paper white, one line. Caption: One phone number for the whole job. + YouTube link in comment.</span></td></tr>
+  </table>
+
+  <h2>06 · Scheduling Rules</h2>
+  <ul class="rules">
+    <li><b>LI-CO</b> = Grand Kahn Electric company page. <b>LI-MC</b> = Mike Casto's personal page. Never cross them.</li>
+    <li><b>The four Mike-gate cards (W1G3, W2G7, W3G11, W4G15) do not get scheduled</b> until their Approval Status flips to APPROVED on the monday board. Design them now; hold them in drafts.</li>
+    <li>Full captions for every card live in the monday board's <b>Copy Hook</b> column — copy them verbatim; they were written to fold in the series storyline.</li>
+    <li>YouTube link (<b>W1G1 and W4G16 only</b>) goes in the <b>first comment</b>, never the post body — LinkedIn throttles external links in posts.</li>
+    <li>After posting: paste the live URL into the board's <b>LinkedIn URL</b> column and flip <b>Buffer Status → SCHEDULED/POSTED</b>. That's how everyone knows where the series stands.</li>
+    <li>District never named. Lower-third names spelled exactly as shot. When in doubt on anything, ask Brandon before it posts — after it posts is too late.</li>
+  </ul>
+
+  <div class="foot">
+    <span>Source of truth: monday → Grand Kahn – Aurora board</span>
+    <span>Hero film: YouTube @GrandKahnChicago</span>
+    <span>Questions → Brandon</span>
+  </div>
+</div>
+</body></html>
